@@ -14,7 +14,8 @@ public class Piso {
 
 	public Piso(LugarPiso[][] lp) {
 		super();
-		this.lp = lp;
+		this.lp = new LugarPiso[5][5];
+		
 	}
 	
 	

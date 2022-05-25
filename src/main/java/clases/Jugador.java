@@ -9,6 +9,7 @@ public class Jugador extends Personaje{
 	private byte pisoActual;
 	private byte posX;
 	private byte posY;
+	
 	public ArrayList<Objeto> getObjetos() {
 		return objetos;
 	}

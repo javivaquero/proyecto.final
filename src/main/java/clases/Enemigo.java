@@ -22,6 +22,4 @@ public class Enemigo extends Personaje {
 		this.tipo = tipo;
 	}
 	
-	
-	
 }
