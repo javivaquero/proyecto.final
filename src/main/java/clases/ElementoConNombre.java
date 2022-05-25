@@ -17,7 +17,9 @@ public class ElementoConNombre {
 		this.nombre = nombre;
 	}
 	
-	
+	public ElementoConNombre() {
+		
+	}
 	
 	
 }

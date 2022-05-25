@@ -1,5 +1,8 @@
 package clases;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Combate {
 
 	private Jugador j;
@@ -7,10 +10,12 @@ public class Combate {
 	
 		
 	
-	public Combate(Jugador j, Enemigo e) {
+	public Combate(Jugador j) {
 		super();
+		Random r=new Random();
 		this.j = j;
-		this.e = e;
+		e=new Enemigo();
+		e=e.listaEnemigos();
 		int tEn=0;
 		int tJug=0;
 		if(e.getpVelocidad()<j.getpVelocidad()) {
@@ -21,6 +26,7 @@ public class Combate {
 			tJug++;
 		}
 		while(e.getpVida()>0&&j.getpVida()>0) {
+			
 			if(tJug>tEn) {
 			atacarEnemigo(j,e);
 			tEn++;
@@ -35,7 +41,7 @@ public class Combate {
 			
 			short vEActual=(short) (e.getpVida()-(j.getpAtaque()-e.getpDefensa()/2));
 			e.setpVida(vEActual);
-			System.out.println("La vida del enemigo es de: "+e.getpVida());
+			System.out.println("Vida de "+e.getNombre()+" : "+e.getpVida());
 		}
 		
 		private void atacarJugador(Jugador j, Enemigo e) {

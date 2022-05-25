@@ -11,13 +11,12 @@ import clases.Objeto;
 
 public class Principal {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		ArrayList<Objeto>inv=new ArrayList<Objeto>();
 		ArrayList<Consumible>cons=new ArrayList<Consumible>();
 		ArrayList<Ataque>atq=new ArrayList<Ataque>();
-		Jugador p=new Jugador("EL BARCO",(short)100,(short)50,(short)50,atq,(byte)100,inv,cons,(byte)0,(byte)5,(byte)3);
-		Enemigo e=new Enemigo("Luis Gay", (short)100, (short)38, (short)50, atq,(byte) 70, Tipo.FUEGO);
-		Combate c=new Combate(p,e);
+		Jugador p=new Jugador("EL BARCO",(short)10000,(short)50,(short)50,atq,(byte)100,inv,cons,(byte)0,(byte)5,(byte)3);
+		Combate c=new Combate(p);
 	}
 
 }

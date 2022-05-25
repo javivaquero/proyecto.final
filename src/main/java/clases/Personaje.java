@@ -9,6 +9,11 @@ public class Personaje extends ElementoConNombre {
 	private short pDefensa;
 	private ArrayList<Ataque> ataques;
 	private byte pVelocidad;
+	
+	public Personaje() {
+		
+	}
+	
 	public short getpVida() {
 		return pVida;
 	}
