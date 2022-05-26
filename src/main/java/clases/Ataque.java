@@ -1,5 +1,7 @@
 package clases;
 
+import java.util.ArrayList;
+
 import enums.Tipo;
 
 public class Ataque extends ElementoConNombre {
@@ -7,7 +9,10 @@ public class Ataque extends ElementoConNombre {
 	 private short potencia;
 	 private byte precision;
 	 private Tipo tipo;
-	public short getPotencia() {
+	public Ataque (){
+		
+	}
+	 public short getPotencia() {
 		return potencia;
 	}
 	public void setPotencia(short potencia) {
@@ -31,6 +36,11 @@ public class Ataque extends ElementoConNombre {
 		this.precision = precision;
 		this.tipo = tipo;
 	}
-	 
+	@Override
+	public String toString() {
+	return this.getNombre();
+	}
+	
+	
 	 
 }

@@ -2,6 +2,8 @@ package clases;
 
 import java.util.ArrayList;
 
+import enums.Tipo;
+
 public class Personaje extends ElementoConNombre {
 
 	private short pVida;
@@ -52,6 +54,17 @@ public class Personaje extends ElementoConNombre {
 		this.pDefensa = pDefensa;
 		this.ataques = new ArrayList<Ataque>();
 		this.pVelocidad = pVelocidad;
+	}
+	
+	public ArrayList<Ataque> listaAtaques() {
+		ArrayList<Ataque>listaAtaques=new ArrayList<Ataque>();
+		//0
+		Ataque insec=new Ataque("Insec",(short)3,(byte)60,Tipo.HIELO);
+		listaAtaques.add(insec);
+		//1
+		Ataque soldaoBarroman=new Ataque("Ataques Tio arena",(short)2,(byte)100,Tipo.FISICO);
+		listaAtaques.add(soldaoBarroman);
+		return listaAtaques;
 	}
 	
 	

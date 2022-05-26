@@ -2,7 +2,7 @@ package clases;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+import clases.Ataque;
 import enums.Tipo;
 
 public class Enemigo extends Personaje {
@@ -29,10 +29,19 @@ public class Enemigo extends Personaje {
 	public Enemigo listaEnemigos() {
 		Random r=new Random();
 		ArrayList<Enemigo>en=new ArrayList<Enemigo>();
-		Enemigo selim=new Enemigo("Selim", (short)1500, (short)50, (short)50, this.getAtaques(),(byte) 70, Tipo.FISICO);
+		//ENEMIGO 0
+		
+		Enemigo selim=new Enemigo("Selim", (short)20, (short)1, (short)2, this.getAtaques(),(byte) 55, Tipo.FISICO);
+		ArrayList<Ataque>ataquesSelim=new ArrayList<Ataque>();
+		ataquesSelim.add(this.listaAtaques().get(0));
+		ataquesSelim.add(this.listaAtaques().get(1));
+		selim.setAtaques(ataquesSelim);
 		en.add(selim);
-		Enemigo barroman=new Enemigo("Barroman", (short)2000, (short)120, (short)100, this.getAtaques(),(byte) 30, Tipo.VIENTO);
+		
+		Enemigo barroman=new Enemigo("Barroman", (short)25, (short)2, (short)2, this.getAtaques(),(byte) 40, Tipo.VIENTO);
+		barroman.setAtaques(ataquesSelim);
 		en.add(barroman);
+		
 		int enR=r.nextInt(en.size());
 		return en.get(enR);
 	}
