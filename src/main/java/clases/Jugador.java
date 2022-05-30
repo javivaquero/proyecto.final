@@ -59,7 +59,7 @@ public class Jugador extends Personaje{
 	}
 	
 	
-	protected Jugador() {
+	public Jugador() {
 		
 	}
 	
@@ -75,12 +75,14 @@ public class Jugador extends Personaje{
 			if(cursor.next()) {
 				if(cursor.getString("usuario").equals(nombre)) {
 					ConexionBD.desconectar();
+					this.setNombre(nombre);
 					Ventana ventana = new Ventana();
 					ventana.irAPantalla("seleccionClase");
-					this.setNombre(nombre);					
+										
 				}else {
 					if(smt.executeUpdate("insert into usuario values('"+nombre+"')")>0) {
 						ConexionBD.desconectar();
+						this.setNombre(nombre);
 						Ventana ventana = new Ventana();
 						ventana.irAPantalla("seleccionClase");
 					}else {
@@ -91,6 +93,7 @@ public class Jugador extends Personaje{
 			}	else {
 				if(smt.executeUpdate("insert into usuario values('"+nombre+"')")>0) {
 					ConexionBD.desconectar();
+					this.setNombre(nombre);
 					Ventana ventana = new Ventana();
 					ventana.irAPantalla("seleccionClase");
 				}else {

@@ -2,7 +2,7 @@ package clases;
 
 public class ElementoConNombre {
 
-	private String nombre;
+	protected String nombre;
 
 	public String getNombre() {
 		return nombre;
