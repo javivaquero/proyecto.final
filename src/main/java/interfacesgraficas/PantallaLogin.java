@@ -38,7 +38,12 @@ public class PantallaLogin extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String nombre=campoUsuario.getText();				
-				Jugador jugador = new Jugador(nombre);							
+				try {
+					Jugador jugador = new Jugador(nombre);
+				} catch (NombreInvalidoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}							
 			}
 		});
 		botonLogin.setToolTipText("Pincha aqu\u00ED para iniciar sesi\u00F3n");

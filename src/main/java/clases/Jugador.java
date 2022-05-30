@@ -64,7 +64,10 @@ public class Jugador extends Personaje{
 	}
 	
 	
-	public Jugador(String nombre) {
+	public Jugador(String nombre) throws NombreInvalidoException {
+		if(nombre.length()>11) {
+			throw new NombreInvalidoException("El nombre introducido es demasiado largo");
+		}
 		Statement smt=ConexionBD.conectar();
 		try {
 			ResultSet cursor=smt.executeQuery("select * from usuario where usuario='"+
