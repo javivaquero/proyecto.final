@@ -1,6 +1,13 @@
 package clases;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+
+import excepciones.NombreInvalidoException;
+import interfacesgraficas.Ventana;
+import utils.ConexionBD;
 
 public class Jugador extends Personaje{
 
@@ -52,7 +59,50 @@ public class Jugador extends Personaje{
 	}
 	
 	
+	protected Jugador() {
+		
+	}
 	
+	
+	public Jugador(String nombre) {
+		Statement smt=ConexionBD.conectar();
+		try {
+			ResultSet cursor=smt.executeQuery("select * from usuario where usuario='"+
+					nombre+"'");
+			if(cursor.next()) {
+				if(cursor.getString("usuario").equals(nombre)) {
+					ConexionBD.desconectar();
+					Ventana ventana = new Ventana();
+					ventana.irAPantalla("seleccionClase");
+					this.setNombre(nombre);					
+				}else {
+					if(smt.executeUpdate("insert into usuario values('"+nombre+"')")>0) {
+						ConexionBD.desconectar();
+						Ventana ventana = new Ventana();
+						ventana.irAPantalla("seleccionClase");
+					}else {
+						throw new SQLException("No se ha podido insertar");
+					}
+				
+				}
+			}	else {
+				if(smt.executeUpdate("insert into usuario values('"+nombre+"')")>0) {
+					ConexionBD.desconectar();
+					Ventana ventana = new Ventana();
+					ventana.irAPantalla("seleccionClase");
+				}else {
+					throw new SQLException("No se ha podido insertar");
+				}
+			
+			}
+		
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+
+		}
+
+}
 	
 	
 }
