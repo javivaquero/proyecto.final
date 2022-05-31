@@ -29,7 +29,8 @@ public class Enemigo extends Personaje {
 	public Enemigo listaEnemigos() {
 		Random r=new Random();
 		ArrayList<Enemigo>en=new ArrayList<Enemigo>();
-		//ENEMIGO 0
+		
+		//0
 		
 		Enemigo selim=new Enemigo("Selim", (short)20, (short)1, (short)2, this.getAtaques(),(byte) 55, Tipo.FISICO);
 		ArrayList<Ataque>ataquesSelim=new ArrayList<Ataque>();
@@ -37,6 +38,8 @@ public class Enemigo extends Personaje {
 		ataquesSelim.add(this.listaAtaques().get(1));
 		selim.setAtaques(ataquesSelim);
 		en.add(selim);
+		
+		//1
 		
 		Enemigo barroman=new Enemigo("Barroman", (short)25, (short)2, (short)2, this.getAtaques(),(byte) 40, Tipo.HIELO);
 		barroman.setAtaques(ataquesSelim);
