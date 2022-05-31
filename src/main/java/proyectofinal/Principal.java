@@ -18,7 +18,7 @@ public class Principal {
 		ArrayList<Objeto>inv=new ArrayList<Objeto>();
 		ArrayList<Consumible>cons=new ArrayList<Consumible>();
 		ArrayList<Ataque>atq=new ArrayList<Ataque>();
-		//Jugador p=new Jugador("Jugador",(short)100,(short)3,(short)3,atq,(byte)50,inv,cons,(byte)0,(byte)5,(byte)3);
+		//Jugador p=new Jugador();
 		//Combate c=new Combate(p);
 		Ventana v=new Ventana();
 	}

@@ -12,7 +12,7 @@ import clases.Jugador;
 
 public class Ventana extends JFrame {
 	private JPanel pantallaActual;
-	protected Jugador usuarioLogado;//ES EL USUARIO QUE INICIA SESIÓN EN LA PANTALLALOGIN, HASTA ENTONCES, VALE NULL.
+	protected String usuarioLogado;//ES EL USUARIO QUE INICIA SESIÓN EN LA PANTALLALOGIN, HASTA ENTONCES, VALE NULL.
 	
 	
 	public Ventana() {
@@ -24,8 +24,8 @@ public class Ventana extends JFrame {
 		//this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		//this.setUndecorated(true);
 		
-		this.setTitle("Ejemplo interfaces Tema 11");
-		this.setIconImage(new ImageIcon("./iconos/iconoPrincipal.png").getImage());
+		this.setTitle("EL JUEGO");
+		this.setIconImage(new ImageIcon("./iconos/icon.png").getImage());
 		//this.setAlwaysOnTop(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -34,7 +34,7 @@ public class Ventana extends JFrame {
 		this.setVisible(true);
 	}
 	
-	public void irAPantalla(String nombrePantalla) {
+	public void irAPantalla(String nombrePantalla, String usuarioLogado) {
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual=null;
 			switch(nombrePantalla) {
@@ -42,7 +42,7 @@ public class Ventana extends JFrame {
 				this.pantallaActual=new PantallaLogin(this);
 				break;
 			case "seleccionClase":
-				this.pantallaActual=new PantallaSeleccionClase(this);
+				this.pantallaActual=new PantallaSeleccionClase(this,usuarioLogado);
 				break;
 			}
 			

@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import enums.Clase;
+import enums.Tipo;
 import excepciones.NombreInvalidoException;
 import interfacesgraficas.Ventana;
 import utils.ConexionBD;
@@ -16,6 +18,7 @@ public class Jugador extends Personaje{
 	private byte pisoActual;
 	private byte posX;
 	private byte posY;
+	private Clase clase;
 	
 	public ArrayList<Objeto> getObjetos() {
 		return objetos;
@@ -49,15 +52,42 @@ public class Jugador extends Personaje{
 	}
 	public Jugador(String nombre, short pVida, short pAtaque, short pDefensa, ArrayList<Ataque> ataques,
 			byte pVelocidad, ArrayList<Objeto> objetos, ArrayList<Consumible> inventario, byte pisoActual, byte posX,
-			byte posY) {
+			byte posY, Clase clase) {
 		super(nombre, pVida, pAtaque, pDefensa, ataques, pVelocidad);
+		ArrayList<Ataque> movimientos=new ArrayList<Ataque>();
+		switch(clase) {
+		case MAGO:
+			//0	
+			Ataque golpe=new Ataque("Golpe",(short)4,(byte)100,Tipo.FISICO);
+			movimientos.add(golpe);
+			//1
+			Ataque quemar=new Ataque("Quemar",(short)7,(byte)75,Tipo.FUEGO);
+			movimientos.add(quemar);
+			//2
+			Ataque congelar=new Ataque("Congelar",(short)6,(byte)80,Tipo.HIELO);
+			movimientos.add(congelar);
+			//3
+			Ataque rayo=new Ataque("Rayo",(short)5,(byte)95,Tipo.FISICO);
+			this.setAtaques(movimientos);
+			break;
+		case TANQUE:
+			break;
+		case ARQUERO:
+			break;
+		case ASESINO:
+			break;	
+			
+		default:
+			break;
+		
+		}
 		this.objetos = new ArrayList<Objeto>();
 		this.inventario = new ArrayList<Consumible>();
 		this.pisoActual = pisoActual;
 		this.posX = posX;
 		this.posY = posY;
+		
 	}
-	
 	
 	public Jugador() {
 		
@@ -77,14 +107,14 @@ public class Jugador extends Personaje{
 					ConexionBD.desconectar();
 					this.setNombre(nombre);
 					Ventana ventana = new Ventana();
-					ventana.irAPantalla("seleccionClase");
+					ventana.irAPantalla("seleccionClase",nombre);
 										
 				}else {
 					if(smt.executeUpdate("insert into usuario values('"+nombre+"')")>0) {
 						ConexionBD.desconectar();
 						this.setNombre(nombre);
 						Ventana ventana = new Ventana();
-						ventana.irAPantalla("seleccionClase");
+						ventana.irAPantalla("seleccionClase",nombre);
 					}else {
 						throw new SQLException("No se ha podido insertar");
 					}
@@ -95,7 +125,7 @@ public class Jugador extends Personaje{
 					ConexionBD.desconectar();
 					this.setNombre(nombre);
 					Ventana ventana = new Ventana();
-					ventana.irAPantalla("seleccionClase");
+					ventana.irAPantalla("seleccionClase",nombre);
 				}else {
 					throw new SQLException("No se ha podido insertar");
 				}

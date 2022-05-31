@@ -38,7 +38,7 @@ public class Enemigo extends Personaje {
 		selim.setAtaques(ataquesSelim);
 		en.add(selim);
 		
-		Enemigo barroman=new Enemigo("Barroman", (short)25, (short)2, (short)2, this.getAtaques(),(byte) 40, Tipo.VIENTO);
+		Enemigo barroman=new Enemigo("Barroman", (short)25, (short)2, (short)2, this.getAtaques(),(byte) 40, Tipo.HIELO);
 		barroman.setAtaques(ataquesSelim);
 		en.add(barroman);
 		
