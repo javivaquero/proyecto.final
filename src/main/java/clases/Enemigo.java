@@ -32,20 +32,31 @@ public class Enemigo extends Personaje {
 		
 		//0
 		
-		Enemigo selim=new Enemigo("Selim", (short)20, (short)1, (short)2, this.getAtaques(),(byte) 55, Tipo.FISICO);
-		ArrayList<Ataque>ataquesSelim=new ArrayList<Ataque>();
-		ataquesSelim.add(this.listaAtaques().get(0));
-		ataquesSelim.add(this.listaAtaques().get(1));
-		selim.setAtaques(ataquesSelim);
-		en.add(selim);
+		Enemigo e1=new Enemigo("e1", (short)20, (short)1, (short)2, this.getAtaques(),(byte) 55, Tipo.FISICO);
+		ArrayList<Ataque>ataquese1=new ArrayList<Ataque>();
+		ataquese1.add(this.listaAtaques().get(0));
+		ataquese1.add(this.listaAtaques().get(1));
+		e1.setAtaques(ataquese1);
+		en.add(e1);
 		
 		//1
 		
-		Enemigo barroman=new Enemigo("Barroman", (short)25, (short)2, (short)2, this.getAtaques(),(byte) 40, Tipo.HIELO);
-		barroman.setAtaques(ataquesSelim);
-		en.add(barroman);
+		Enemigo e2=new Enemigo("e2", (short)25, (short)2, (short)2, this.getAtaques(),(byte) 40, Tipo.HIELO);
+		e2.setAtaques(ataquese1);
+		en.add(e2);
 		
 		int enR=r.nextInt(en.size());
 		return en.get(enR);
+	}
+	
+	public ArrayList<Ataque> listaAtaques() {
+		ArrayList<Ataque>listaAtaques=new ArrayList<Ataque>();
+		//0
+		Ataque a1=new Ataque("a1",(short)3,(byte)60,Tipo.HIELO);
+		listaAtaques.add(a1);
+		//1
+		Ataque a2=new Ataque("a2",(short)2,(byte)100,Tipo.FISICO);
+		listaAtaques.add(a2);
+		return listaAtaques;
 	}
 }

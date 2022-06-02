@@ -14,6 +14,7 @@ public class Combate {
 	
 	public Combate(Jugador j) {
 		super();
+		this.j = j;
 		e=new Enemigo();
 		e=e.listaEnemigos();
 		int tEn=0;
@@ -33,8 +34,8 @@ public class Combate {
 			atacarJugador(j,e);
 			tJug++;
 		}while(e.getpVida()>0&&j.getpVida()>0);
-		j.setpVida(j.getpVida());
-		this.j = j;
+		this.j.setpVida(j.getpVida());
+		
 	}
 
 	private void atacarEnemigo(Jugador j, Enemigo e) {

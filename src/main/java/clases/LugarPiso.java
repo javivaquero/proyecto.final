@@ -1,6 +1,6 @@
 package clases;
 
-public class LugarPiso {
+public class LugarPiso{
 
 	private Objeto obj;
 	private Enemigo e;
@@ -24,11 +24,12 @@ public class LugarPiso {
 		this.cs = cs;
 	}
 	public LugarPiso(Objeto obj, Enemigo e, Consumible cs) {
-		super();
+	
 		this.obj = obj;
-		this.e = e;
+		this.e = e.listaEnemigos();
 		this.cs = cs;
 	}
+
 	
 	
 	

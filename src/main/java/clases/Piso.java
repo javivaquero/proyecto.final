@@ -2,7 +2,7 @@ package clases;
 
 public class Piso {
 
-	private LugarPiso[][]lp;
+	public LugarPiso[][]lp;
 
 	public LugarPiso[][] getLp() {
 		return lp;
@@ -14,8 +14,8 @@ public class Piso {
 
 	public Piso(LugarPiso[][] lp) {
 		super();
-		this.lp = new LugarPiso[5][5];
-		
+		this.lp=lp;
+		lp = new LugarPiso[5][5];
 	}
 	
 	

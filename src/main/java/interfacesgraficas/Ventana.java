@@ -1,5 +1,6 @@
 package interfacesgraficas;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -34,7 +35,7 @@ public class Ventana extends JFrame {
 		this.setVisible(true);
 	}
 	
-	public void irAPantalla(String nombrePantalla, String usuarioLogado) {
+	public void irAPantalla(String nombrePantalla, String usuarioLogado) throws IOException {
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual=null;
 			switch(nombrePantalla) {

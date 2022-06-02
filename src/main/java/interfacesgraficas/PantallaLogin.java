@@ -32,7 +32,7 @@ public class PantallaLogin extends JPanel{
 		this.ventana=v;
 		setLayout(null);
 		
-		JButton botonLogin = new BotonRojo("Login");
+		JButton botonLogin = new JButton("Login");
 		botonLogin.setBackground(Color.WHITE);
 		botonLogin.addMouseListener(new MouseAdapter() {
 			@Override

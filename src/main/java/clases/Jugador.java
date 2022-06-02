@@ -1,5 +1,6 @@
 package clases;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -67,7 +68,7 @@ public class Jugador extends Personaje{
 			Ataque congelar=new Ataque("Congelar",(short)6,(byte)80,Tipo.HIELO);
 			movimientos.add(congelar);
 			//3
-			Ataque rayo=new Ataque("Rayo",(short)5,(byte)95,Tipo.FISICO);
+			Ataque rayo=new Ataque("Rayo",(short)5,(byte)95,Tipo.ELECTRICO);
 			this.setAtaques(movimientos);
 			break;
 		case TANQUE:
@@ -136,6 +137,9 @@ public class Jugador extends Personaje{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 }

@@ -14,10 +14,6 @@ import clases.Objeto;
 public class Principal {
 
 	public static void main(String[] args)  {
-		Scanner sc=new Scanner(System.in);
-		ArrayList<Objeto>inv=new ArrayList<Objeto>();
-		ArrayList<Consumible>cons=new ArrayList<Consumible>();
-		ArrayList<Ataque>atq=new ArrayList<Ataque>();
 		//Jugador p=new Jugador();
 		//Combate c=new Combate(p);
 		Ventana v=new Ventana();
