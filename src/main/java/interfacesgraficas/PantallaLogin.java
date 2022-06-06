@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,8 +40,13 @@ public class PantallaLogin extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				String nombre=campoUsuario.getText();				
 				try {
-					Jugador jugador = new Jugador(nombre);
+					ventana.j = new Jugador(nombre);
+					
+					ventana.irAPantalla(ventana, nombre);
 				} catch (NombreInvalidoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}							

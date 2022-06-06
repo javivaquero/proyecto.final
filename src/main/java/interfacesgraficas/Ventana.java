@@ -8,12 +8,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import clases.Combate;
 import clases.Jugador;
 
 
 public class Ventana extends JFrame {
 	private JPanel pantallaActual;
 	protected String usuarioLogado;//ES EL USUARIO QUE INICIA SESIÓN EN LA PANTALLALOGIN, HASTA ENTONCES, VALE NULL.
+	protected Jugador j;
 	
 	
 	public Ventana() {
@@ -35,20 +37,26 @@ public class Ventana extends JFrame {
 		this.setVisible(true);
 	}
 	
-	public void irAPantalla(String nombrePantalla, String usuarioLogado) throws IOException {
+	public void irAPantalla(Ventana v) throws IOException {
 		this.pantallaActual.setVisible(false);
-		this.pantallaActual=null;
-			switch(nombrePantalla) {
-			case "login":
+		this.pantallaActual=null;			
 				this.pantallaActual=new PantallaLogin(this);
-				break;
-			case "seleccionClase":
-				this.pantallaActual=new PantallaSeleccionClase(this,usuarioLogado);
-				break;
+
 			}
-			
+	public void irAPantalla(Ventana v, String nombre) throws IOException {
+		this.pantallaActual.setVisible(false);
+		this.pantallaActual=null;					
+		this.pantallaActual=new PantallaSeleccionClase(this,nombre);				
 		this.pantallaActual.setVisible(true);
 		this.setContentPane(pantallaActual);
 	}
+	
+	public void irAPantallaC(Ventana v, Jugador j) throws IOException {
+		this.pantallaActual.setVisible(false);
+		this.pantallaActual=null;			
+
+				this.pantallaActual=new PantallaCombate(this, j);
+			
+			}
 	
 }

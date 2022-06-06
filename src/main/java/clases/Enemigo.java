@@ -25,6 +25,23 @@ public class Enemigo extends Personaje {
 	public Enemigo() {
 		
 	}
+	
+
+	
+	private void atacarJugador(Jugador j) {
+		//los e son this
+		Random r=new Random();
+		Ataque atEn=e.getAtaques().get(r.nextInt(e.getAtaques().size()));
+		byte acierto=(byte) r.nextInt(100);
+		if(acierto<=atEn.getPrecision()) {
+			short vJActual=(short) (j.getpVida()-(e.getpAtaque()+atEn.getPotencia())/j.getpDefensa());
+			j.setpVida(vJActual);
+			System.out.println(e.getNombre()+" usó "+atEn);
+			System.out.println("Vida de "+j.getNombre()+" : "+j.getpVida());
+		}else {
+			System.out.println("El ataque de "+e.getNombre()+" falló!");
+		}
+	}
 
 	public Enemigo listaEnemigos() {
 		Random r=new Random();

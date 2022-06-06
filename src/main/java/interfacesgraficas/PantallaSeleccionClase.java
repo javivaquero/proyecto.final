@@ -54,7 +54,12 @@ public class PantallaSeleccionClase extends JPanel{
 			ArrayList<Objeto>o=new ArrayList<Objeto>();
 			ArrayList<Consumible>cs=new ArrayList<Consumible>();
 			j=new Jugador(user,(short)60,(short)5,(short)1,a,(byte)40,o,cs,(byte)1,(byte)1,(byte)1,Clase.MAGO);
-			Combate c=new Combate(j);
+			try {
+				ventana.irAPantallaC(ventana, j);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			}
 		});
 		

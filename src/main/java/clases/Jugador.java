@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Random;
 
 import enums.Clase;
 import enums.Tipo;
@@ -107,15 +108,13 @@ public class Jugador extends Personaje{
 				if(cursor.getString("usuario").equals(nombre)) {
 					ConexionBD.desconectar();
 					this.setNombre(nombre);
-					Ventana ventana = new Ventana();
-					ventana.irAPantalla("seleccionClase",nombre);
+					
 										
 				}else {
 					if(smt.executeUpdate("insert into usuario values('"+nombre+"')")>0) {
 						ConexionBD.desconectar();
 						this.setNombre(nombre);
-						Ventana ventana = new Ventana();
-						ventana.irAPantalla("seleccionClase",nombre);
+						
 					}else {
 						throw new SQLException("No se ha podido insertar");
 					}
@@ -125,8 +124,7 @@ public class Jugador extends Personaje{
 				if(smt.executeUpdate("insert into usuario values('"+nombre+"')")>0) {
 					ConexionBD.desconectar();
 					this.setNombre(nombre);
-					Ventana ventana = new Ventana();
-					ventana.irAPantalla("seleccionClase",nombre);
+					
 				}else {
 					throw new SQLException("No se ha podido insertar");
 				}
@@ -137,12 +135,54 @@ public class Jugador extends Personaje{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 
 }
 	
+	}	
 	
+	private static void atacarEnemigo(Enemigo e,Ataque a) {
+		Random r=new Random();
+		//cambiar j por this
+		Ataque atJ=j.getAtaques().get(r.nextInt(getAtaques().size()));
+		byte acierto=(byte) r.nextInt(100);
+		if(acierto<atJ.getPrecision()) {
+		short vEActual=0;
+		switch(atJ.getTipo()) {
+		default:
+			break;
+		case FISICO:
+				vEActual=(short) (e.getpVida()-(j.getpAtaque()+atJ.getPotencia())/j.getpDefensa());
+			break;
+		case FUEGO:
+				if(e.getTipo()==Tipo.HIELO) {
+					vEActual=(short) (e.getpVida()-(2)*(j.getpAtaque()+atJ.getPotencia())/j.getpDefensa());
+				}
+			break;
+		case ELECTRICO:
+			if(e.getTipo()==Tipo.FUEGO) {
+				vEActual=(short) (e.getpVida()-(2)*(j.getpAtaque()+atJ.getPotencia())/j.getpDefensa());
+			}
+			break;
+		case HIELO:
+			if(e.getTipo()==Tipo.ELECTRICO) {
+				vEActual=(short) (e.getpVida()-(2)*(j.getpAtaque()+atJ.getPotencia())/j.getpDefensa());
+			}
+			break;
+		}
+		e.setpVida(vEActual);
+		System.out.println(j.getNombre()+" usó "+atJ.getNombre());
+		System.out.println("Vida de "+e.getNombre()+" : "+e.getpVida());
+		}else {
+			System.out.println("El ataque de "+j.getNombre()+" falló!");
+		}
+	}
+	
+	public Jugador getJ() {
+	return j;
+}
+
+	public void setJ(Jugador j) {
+	this.j = j;
+}
 }

@@ -29,6 +29,7 @@ public class LugarPiso{
 		this.e = e.listaEnemigos();
 		this.cs = cs;
 	}
+	public LugarPiso() {}
 
 	
 	

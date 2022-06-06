@@ -7,6 +7,10 @@ public class Piso {
 	public LugarPiso[][] getLp() {
 		return lp;
 	}
+	
+	public Piso() {
+		
+	}
 
 	public void setLp(LugarPiso[][] lp) {
 		this.lp = lp;
