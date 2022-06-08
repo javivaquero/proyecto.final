@@ -2,15 +2,12 @@ package componentesvisuales;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
-import javax.swing.border.MatteBorder;
 
-public class BotonRojo extends JButton {
-
-	public BotonRojo(String s) {
+public class BotonI extends JButton {
+	
+	public BotonI(String s) {
 		super(s);
 		estilosPorDefecto();
 	}
@@ -19,8 +16,7 @@ public class BotonRojo extends JButton {
 		this.setOpaque(false);
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);
-		this.setFont(new Font("StatusPlz", Font.BOLD, 10));
-	
+		this.setFont(new Font("StatusPlz", Font.PLAIN, 10));
+		this.setForeground(Color.WHITE);
 	}
-	
 }

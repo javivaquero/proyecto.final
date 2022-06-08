@@ -1,19 +1,7 @@
 package interfacesgraficas;
-import clases.Ataque;
-import clases.Combate;
-import clases.Consumible;
-import clases.Jugador;
-import clases.Objeto;
-import enums.Clase;
-
-import javax.swing.JPanel;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -21,8 +9,19 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
-import java.awt.Font;
+import javax.swing.JPanel;
+
+import clases.Ataque;
+import clases.Consumible;
+import clases.Jugador;
+import clases.Objeto;
+import enums.Clase;
+import javazoom.jl.decoder.JavaLayerException;
 
 public class PantallaSeleccionClase extends JPanel{
 
@@ -59,7 +58,10 @@ public class PantallaSeleccionClase extends JPanel{
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}
+			} catch (JavaLayerException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
 			}
 		});
 		

@@ -7,9 +7,8 @@ import java.util.Iterator;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import clases.Combate;
 import clases.Jugador;
+import javazoom.jl.decoder.JavaLayerException;
 
 
 public class Ventana extends JFrame {
@@ -20,7 +19,7 @@ public class Ventana extends JFrame {
 	
 	public Ventana() {
 		
-		this.setSize(500,400);
+		this.setSize(1024,768);
 		this.setLocationRelativeTo(null);
 		
 		//Pantalla completa las dos lineas siguentes
@@ -40,7 +39,7 @@ public class Ventana extends JFrame {
 	public void irAPantalla(Ventana v) throws IOException {
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual=null;			
-				this.pantallaActual=new PantallaLogin(this);
+		this.pantallaActual=new PantallaLogin(this);
 
 			}
 	public void irAPantalla(Ventana v, String nombre) throws IOException {
@@ -51,11 +50,13 @@ public class Ventana extends JFrame {
 		this.setContentPane(pantallaActual);
 	}
 	
-	public void irAPantallaC(Ventana v, Jugador j) throws IOException {
+	public void irAPantallaC(Ventana v,Jugador j) throws IOException, JavaLayerException {
+		this.j=j;
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual=null;			
-
-				this.pantallaActual=new PantallaCombate(this, j);
+		this.pantallaActual=new PantallaCombate(this, j);
+		this.pantallaActual.setVisible(true);
+		this.setContentPane(pantallaActual);
 			
 			}
 	

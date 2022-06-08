@@ -1,5 +1,7 @@
 package clases;
 
+import java.io.IOException;
+
 public class LugarPiso{
 
 	private Objeto obj;
@@ -23,7 +25,7 @@ public class LugarPiso{
 	public void setCs(Consumible cs) {
 		this.cs = cs;
 	}
-	public LugarPiso(Objeto obj, Enemigo e, Consumible cs) {
+	public LugarPiso(Objeto obj, Enemigo e, Consumible cs) throws IOException {
 	
 		this.obj = obj;
 		this.e = e.listaEnemigos();

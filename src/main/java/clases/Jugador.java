@@ -1,5 +1,7 @@
 package clases;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +13,8 @@ import enums.Clase;
 import enums.Tipo;
 import excepciones.NombreInvalidoException;
 import interfacesgraficas.Ventana;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 import utils.ConexionBD;
 
 public class Jugador extends Personaje{
@@ -70,6 +74,7 @@ public class Jugador extends Personaje{
 			movimientos.add(congelar);
 			//3
 			Ataque rayo=new Ataque("Rayo",(short)5,(byte)95,Tipo.ELECTRICO);
+			movimientos.add(rayo);
 			this.setAtaques(movimientos);
 			break;
 		case TANQUE:
@@ -141,10 +146,11 @@ public class Jugador extends Personaje{
 	
 	}	
 	
-	private static void atacarEnemigo(Enemigo e,Ataque a) {
+	public void atacarEnemigo(Enemigo e,Ataque a,byte at) throws FileNotFoundException, JavaLayerException {
 		Random r=new Random();
-		//cambiar j por this
-		Ataque atJ=j.getAtaques().get(r.nextInt(getAtaques().size()));
+		//cambiar this por this
+		
+		Ataque atJ=this.getAtaques().get(at);
 		byte acierto=(byte) r.nextInt(100);
 		if(acierto<atJ.getPrecision()) {
 		short vEActual=0;
@@ -152,37 +158,30 @@ public class Jugador extends Personaje{
 		default:
 			break;
 		case FISICO:
-				vEActual=(short) (e.getpVida()-(j.getpAtaque()+atJ.getPotencia())/j.getpDefensa());
+				vEActual=(short) (e.getpVida()-(this.getpAtaque()+atJ.getPotencia())/this.getpDefensa());
 			break;
 		case FUEGO:
 				if(e.getTipo()==Tipo.HIELO) {
-					vEActual=(short) (e.getpVida()-(2)*(j.getpAtaque()+atJ.getPotencia())/j.getpDefensa());
+					vEActual=(short) (e.getpVida()-(2)*(this.getpAtaque()+atJ.getPotencia())/this.getpDefensa());
 				}
 			break;
 		case ELECTRICO:
 			if(e.getTipo()==Tipo.FUEGO) {
-				vEActual=(short) (e.getpVida()-(2)*(j.getpAtaque()+atJ.getPotencia())/j.getpDefensa());
+				vEActual=(short) (e.getpVida()-(2)*(this.getpAtaque()+atJ.getPotencia())/this.getpDefensa());
 			}
 			break;
 		case HIELO:
 			if(e.getTipo()==Tipo.ELECTRICO) {
-				vEActual=(short) (e.getpVida()-(2)*(j.getpAtaque()+atJ.getPotencia())/j.getpDefensa());
+				vEActual=(short) (e.getpVida()-(2)*(this.getpAtaque()+atJ.getPotencia())/this.getpDefensa());
 			}
 			break;
 		}
 		e.setpVida(vEActual);
-		System.out.println(j.getNombre()+" usó "+atJ.getNombre());
+		System.out.println(this.getNombre()+" usó "+atJ.getNombre());
 		System.out.println("Vida de "+e.getNombre()+" : "+e.getpVida());
 		}else {
-			System.out.println("El ataque de "+j.getNombre()+" falló!");
+			System.out.println("El ataque de "+this.getNombre()+" falló!");
 		}
 	}
 	
-	public Jugador getJ() {
-	return j;
-}
-
-	public void setJ(Jugador j) {
-	this.j = j;
-}
 }

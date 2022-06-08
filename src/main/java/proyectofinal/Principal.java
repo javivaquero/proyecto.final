@@ -5,7 +5,6 @@ import java.util.Scanner;
 import enums.Tipo;
 import interfacesgraficas.Ventana;
 import clases.Ataque;
-import clases.Combate;
 import clases.Consumible;
 import clases.Enemigo;
 import clases.Jugador;
