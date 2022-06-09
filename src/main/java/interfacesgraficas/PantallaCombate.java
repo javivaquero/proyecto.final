@@ -43,10 +43,21 @@ import javax.swing.Icon;
 
 public class PantallaCombate extends JPanel{
 	private Enemigo en;
+	protected Clip clip;
 	
-	public PantallaCombate(Ventana v,Jugador j) throws IOException, JavaLayerException {
-		do {
-		
+	public PantallaCombate(Ventana v,Jugador j) throws IOException, JavaLayerException, LineUnavailableException {
+		try {
+			AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./imagenes/p3.wav"));
+			this.clip=AudioSystem.getClip();
+			clip.open(audio);
+			clip.start();
+		} catch (UnsupportedAudioFileException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();	
+		}
 		BufferedImage vFImg = ImageIO.read(new File("imagenes/vFondo.png"));
 		setBackground(Color.BLACK);
 		Random r= new Random();
@@ -127,7 +138,7 @@ public class PantallaCombate extends JPanel{
 		add(av_Enemigo);
 		
 		JLabel imgFondo = new JLabel(new ImageIcon(this.getClass().getResource("f1.gif")));
-		imgFondo.setBounds(0, 148, 1102, 373);
+		imgFondo.setBounds(-104, 141, 1260, 373);
 		add(imgFondo);
 		ataque3.addMouseListener(new MouseAdapter() {
 			@Override
@@ -148,33 +159,5 @@ public class PantallaCombate extends JPanel{
 				}
 			}
 		});
-		}while(en.getpVida()>0);
-		}
-	
-	public void play(String path, int delay, int numberOfLoops) {
-	    for(int i = 0; i < numberOfLoops; i++) {
-	        new Thread() {
-	            @Override
-	            public void run() {
-	                try {
-	                    File file = new File(path);
-	                    Clip clip = AudioSystem.getClip();
-	                    clip.open(AudioSystem.getAudioInputStream(file));
-	                    clip.start();
-	                    Thread.sleep(clip.getMicrosecondLength());
-
-	                } catch (Exception e) {
-	                	e.printStackTrace();
-	                }
-	            }
-	        }.start();
-	        try {
-	            Thread.sleep(delay);
-	        } catch (InterruptedException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	}
-	
-
+	}	
 }

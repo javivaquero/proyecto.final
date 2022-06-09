@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -50,7 +51,7 @@ public class Ventana extends JFrame {
 		this.setContentPane(pantallaActual);
 	}
 	
-	public void irAPantallaC(Ventana v,Jugador j) throws IOException, JavaLayerException {
+	public void irAPantallaC(Ventana v,Jugador j) throws IOException, JavaLayerException, LineUnavailableException {
 		this.j=j;
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual=null;			

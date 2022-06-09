@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -52,13 +53,16 @@ public class PantallaSeleccionClase extends JPanel{
 			ArrayList<Ataque>a=new ArrayList<Ataque>();
 			ArrayList<Objeto>o=new ArrayList<Objeto>();
 			ArrayList<Consumible>cs=new ArrayList<Consumible>();
-			j=new Jugador(user,(short)60,(short)5,(short)1,a,(byte)40,o,cs,(byte)1,(byte)1,(byte)1,Clase.MAGO);
+			j=new Jugador(user,(short)60,(short)5,(short)1,a,(byte)40,o,cs,(byte)1,Clase.MAGO);
 			try {
 				ventana.irAPantallaC(ventana, j);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (JavaLayerException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (LineUnavailableException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} 
@@ -106,7 +110,7 @@ public class PantallaSeleccionClase extends JPanel{
 				ArrayList<Ataque>a=new ArrayList<Ataque>();
 				ArrayList<Objeto>o=new ArrayList<Objeto>();
 				ArrayList<Consumible>cs=new ArrayList<Consumible>();
-				j=new Jugador(user,(short)100,(short)2,(short)3,a,(byte)30,o,cs,(byte)1,(byte)1,(byte)1,Clase.TANQUE);
+				j=new Jugador(user,(short)100,(short)2,(short)3,a,(byte)30,o,cs,(byte)1,Clase.TANQUE);
 				
 			}
 		});
@@ -125,7 +129,7 @@ public class PantallaSeleccionClase extends JPanel{
 				ArrayList<Ataque>a=new ArrayList<Ataque>();
 				ArrayList<Objeto>o=new ArrayList<Objeto>();
 				ArrayList<Consumible>cs=new ArrayList<Consumible>();				
-				j=new Jugador(user,(short)65,(short)4,(short)2,a,(byte)60,o,cs,(byte)1,(byte)1,(byte)1,Clase.ARQUERO);
+				j=new Jugador(user,(short)65,(short)4,(short)2,a,(byte)60,o,cs,(byte)1,Clase.ARQUERO);
 			}
 		});
 		GridBagConstraints gbc_botonArquero = new GridBagConstraints();
@@ -142,7 +146,7 @@ public class PantallaSeleccionClase extends JPanel{
 				ArrayList<Ataque>a=new ArrayList<Ataque>();
 				ArrayList<Objeto>o=new ArrayList<Objeto>();
 				ArrayList<Consumible>cs=new ArrayList<Consumible>();				
-				j=new Jugador(user,(short)40,(short)7,(short)1,a,(byte)80,o,cs,(byte)1,(byte)1,(byte)1,Clase.ASESINO);
+				j=new Jugador(user,(short)40,(short)7,(short)1,a,(byte)80,o,cs,(byte)1,Clase.ASESINO);
 			}
 		});
 		GridBagConstraints gbc_botonAsesino = new GridBagConstraints();

@@ -15,6 +15,7 @@ public class Principal {
 	public static void main(String[] args)  {
 		//Jugador p=new Jugador();
 		//Combate c=new Combate(p);
+		
 		Ventana v=new Ventana();
 	}
 
