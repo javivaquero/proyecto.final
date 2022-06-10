@@ -55,7 +55,7 @@ public class PantallaSeleccionClase extends JPanel{
 			ArrayList<Consumible>cs=new ArrayList<Consumible>();
 			j=new Jugador(user,(short)60,(short)5,(short)1,a,(byte)40,o,cs,(byte)1,Clase.MAGO);
 			try {
-				ventana.irAPantallaC(ventana, j);
+				ventana.irAPantallaC(ventana, j,null);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

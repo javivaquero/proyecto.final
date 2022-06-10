@@ -8,6 +8,8 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import clases.Enemigo;
 import clases.Jugador;
 import javazoom.jl.decoder.JavaLayerException;
 
@@ -51,11 +53,11 @@ public class Ventana extends JFrame {
 		this.setContentPane(pantallaActual);
 	}
 	
-	public void irAPantallaC(Ventana v,Jugador j) throws IOException, JavaLayerException, LineUnavailableException {
+	public void irAPantallaC(Ventana v,Jugador j,Enemigo en) throws IOException, JavaLayerException, LineUnavailableException {
 		this.j=j;
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual=null;			
-		this.pantallaActual=new PantallaCombate(this, j);
+		this.pantallaActual=new PantallaCombate(this, j,null);
 		this.pantallaActual.setVisible(true);
 		this.setContentPane(pantallaActual);
 			

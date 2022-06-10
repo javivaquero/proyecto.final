@@ -45,7 +45,7 @@ public class PantallaCombate extends JPanel{
 	private Enemigo en;
 	protected Clip clip;
 	
-	public PantallaCombate(Ventana v,Jugador j) throws IOException, JavaLayerException, LineUnavailableException {
+	public PantallaCombate(Ventana v,Jugador j,Enemigo en) throws IOException, JavaLayerException, LineUnavailableException {
 		try {
 			AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./imagenes/p3.wav"));
 			this.clip=AudioSystem.getClip();
@@ -68,20 +68,22 @@ public class PantallaCombate extends JPanel{
 		JPanel panelAccion = new JPanel();
 		panelAccion.setBorder(new LineBorder(Color.WHITE));
 		panelAccion.setBackground(Color.BLACK);
-		panelAccion.setBounds(29, 11, 213, 67);
+		panelAccion.setBounds(29, 11, 291, 108);
 		add(panelAccion);
 		panelAccion.setLayout(null);
 		
 		JButton ataque0 = new BotonI(j.getAtaques().get(0).toString());
+		ataque0.setFont(new Font("StatusPlz", Font.PLAIN, 14));
 		ataque0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		ataque0.setBounds(17, 33, 87, 23);
+		ataque0.setBounds(17, 57, 115, 40);
 		panelAccion.add(ataque0);
 		
 		JButton ataque1 = new BotonI(j.getAtaques().get(1).toString());
-		ataque1.setBounds(17, 5, 87, 23);
+		ataque1.setFont(new Font("StatusPlz", Font.PLAIN, 14));
+		ataque1.setBounds(17, 5, 115, 41);
 		panelAccion.add(ataque1);
 		ataque1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -91,7 +93,8 @@ public class PantallaCombate extends JPanel{
 		});
 		
 		JButton ataque2 =new BotonI(j.getAtaques().get(2).toString());
-		ataque2.setBounds(109, 5, 87, 23);
+		ataque2.setFont(new Font("StatusPlz", Font.PLAIN, 14));
+		ataque2.setBounds(153, 5, 115, 41);
 		panelAccion.add(ataque2);
 		ataque2.addMouseListener(new MouseAdapter() {
 			@Override
@@ -100,7 +103,8 @@ public class PantallaCombate extends JPanel{
 		});
 		
 		JButton ataque3 = new BotonI(j.getAtaques().get(3).toString());
-		ataque3.setBounds(109, 33, 87, 23);
+		ataque3.setFont(new Font("StatusPlz", Font.PLAIN, 14));
+		ataque3.setBounds(153, 57, 115, 40);
 		panelAccion.add(ataque3);
 		
 		JPanel panelVida = new JPanel();
