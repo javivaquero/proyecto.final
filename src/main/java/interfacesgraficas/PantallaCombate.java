@@ -9,6 +9,8 @@ import componentesvisuales.JLComb;
 
 
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageInputStream;
 import javax.sound.sampled.AudioInputStream;
@@ -42,9 +44,10 @@ import javax.swing.Icon;
 
 public class PantallaCombate extends JPanel{
 	private Enemigo ene;
-	ImageIcon sprite;
-	private String m;
+	protected ImageIcon sprite;
+	private String men;
 	public PantallaCombate(Ventana v,Jugador j,String m,Enemigo en) throws IOException, LineUnavailableException {		
+		this.men=m;
 		if(en==null) {		
 			en=new Enemigo();			
 			switch(j.getPiso()) {
@@ -58,7 +61,7 @@ public class PantallaCombate extends JPanel{
 					v.clip=AudioSystem.getClip();					
 					v.clip.open(audio);
 					v.clip.start();
-					
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
 				} catch (UnsupportedAudioFileException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -73,11 +76,11 @@ public class PantallaCombate extends JPanel{
 			case 2:
 				en=en.listaEnemigos((byte) 1);
 				try {					
-					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/2.wav"));
-					v.clip.close();
+					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/2.wav"));				
 					v.clip=AudioSystem.getClip();				
 					v.clip.open(audio);
-					v.clip.start();		
+					v.clip.start();	
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
 				} catch (UnsupportedAudioFileException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -110,15 +113,17 @@ public class PantallaCombate extends JPanel{
 		JPanel panelAccion = new JPanel();
 		panelAccion.setBorder(new LineBorder(Color.WHITE));
 		panelAccion.setBackground(Color.BLACK);
-		panelAccion.setBounds(29, 11, 213, 67);
+		panelAccion.setBounds(29, 554, 275, 190);
 		add(panelAccion);
-		panelAccion.setLayout(null);
+		panelAccion.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JButton ataque0 = new BotonI(j.getAtaques().get(0).toString());
+		ataque0.setFont(new Font("StatusPlz", Font.PLAIN, 16));
 		ataque0.setBounds(17, 33, 87, 23);
 		panelAccion.add(ataque0);
 		
 		JButton ataque1 = new BotonI(j.getAtaques().get(1).toString());
+		ataque1.setFont(new Font("StatusPlz", Font.PLAIN, 16));
 		ataque1.setBounds(17, 5, 87, 23);
 		panelAccion.add(ataque1);
 		ataque1.addMouseListener(new MouseAdapter() {
@@ -130,11 +135,12 @@ public class PantallaCombate extends JPanel{
 					try {
 						j.atacarEnemigo(ene, a, na);
 						if(ene.getpVida()>0) {
-							v.irAPantallaAE(v, j, m, ene,sprite);
+							men=j.getNombre()+" uso: "+a.getNombre()+".";
+							v.irAPantallaAE(v, j, men, ene,sprite);
 						}else {
-							
+							v.clip.close();
 							j.setPiso((byte) (j.getPiso()+1));					
-							v.irAPantallaC(v, j, "", null);
+							v.irAPantallaO(v,j);
 						}
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
@@ -150,6 +156,7 @@ public class PantallaCombate extends JPanel{
 		});
 		
 		JButton ataque2 =new BotonI(j.getAtaques().get(2).toString());
+		ataque2.setFont(new Font("StatusPlz", Font.PLAIN, 16));
 		ataque2.setBounds(109, 5, 87, 23);
 		panelAccion.add(ataque2);
 		ataque2.addMouseListener(new MouseAdapter() {
@@ -161,12 +168,12 @@ public class PantallaCombate extends JPanel{
 					try {
 						j.atacarEnemigo(ene, a, na);
 						if(ene.getpVida()>0) {
-							
-							v.irAPantallaAE(v, j, m, ene,sprite);
+							men=j.getNombre()+" uso: "+a.getNombre()+".";
+							v.irAPantallaAE(v, j, men, ene,sprite);
 						}else {
-							
+							v.clip.close();
 							j.setPiso((byte) (j.getPiso()+1));
-							v.irAPantallaC(v, j, "", null);
+							v.irAPantallaO(v,j);
 							
 						}
 					} catch (FileNotFoundException e1) {
@@ -183,6 +190,7 @@ public class PantallaCombate extends JPanel{
 		});
 		
 		JButton ataque3 = new BotonI(j.getAtaques().get(3).toString());
+		ataque3.setFont(new Font("StatusPlz", Font.PLAIN, 16));
 		ataque3.setBounds(109, 33, 87, 23);
 		panelAccion.add(ataque3);
 		
@@ -198,11 +206,11 @@ public class PantallaCombate extends JPanel{
 		nombreJ.setBounds(0, 24, 199, 49);
 		panelVida.add(nombreJ);
 		
-		JLabel vJugador = new JLabel(""+j.getpVida());
+		JLabel vJugador = new JLabel(""+j.getpVida()+"");
 		vJugador.setHorizontalAlignment(SwingConstants.CENTER);
 		vJugador.setForeground(Color.BLACK);
-		vJugador.setFont(new Font("StatusPlz", Font.PLAIN, 36));
-		vJugador.setBounds(95, 89, 104, 34);
+		vJugador.setFont(new Font("Verdana", Font.PLAIN, 36));
+		vJugador.setBounds(75, 84, 114, 34);
 		panelVida.add(vJugador);
 		
 		JLabel zimgFVida = new JLabel(new ImageIcon(vFImg));
@@ -212,10 +220,6 @@ public class PantallaCombate extends JPanel{
 		JLabel aSprite = new JLabel(sprite);
 		aSprite.setBounds(168, 185, 639, 300);
 		add(aSprite);
-		
-		JLabel imgFondo = new JLabel(new ImageIcon(this.getClass().getResource("f1.gif")));
-		imgFondo.setBounds(-104, 141, 1260, 373);
-		add(imgFondo);
 		JLabel texto = new JLabel(m);
 		JPanel panelM = new JPanel();
 		panelM.setLayout(null);
@@ -229,6 +233,14 @@ public class PantallaCombate extends JPanel{
 		texto.setBounds(0, 0, 714, 67);
 		panelM.add(texto);
 		
+		JPanel panelFondo = new JPanel();
+		panelFondo.setBounds(0, 179, 1023, 335);
+		panelFondo.setOpaque(false);
+		add(panelFondo);
+		
+		JLabel imgFondo = new JLabel(new ImageIcon(this.getClass().getResource("f1.gif")));
+		panelFondo.add(imgFondo);
+		
 		
 		ataque3.addMouseListener(new MouseAdapter() {
 			@Override
@@ -239,12 +251,13 @@ public class PantallaCombate extends JPanel{
 					try {
 						j.atacarEnemigo(ene, a, na);
 						if(ene.getpVida()>0) {
-							v.irAPantallaAE(v, j, m, ene,sprite);
+							men=j.getNombre()+" uso: "+a.getNombre()+".";
+							v.irAPantallaAE(v, j, men, ene,sprite);
 							
 						}else {
-							
+							v.clip.close();
 							j.setPiso((byte) (j.getPiso()+1));
-							v.irAPantallaC(v, j, "", null);
+							v.irAPantallaO(v,j);
 						}
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
@@ -267,12 +280,13 @@ public class PantallaCombate extends JPanel{
 					try {
 						j.atacarEnemigo(ene, a, na);
 						if(ene.getpVida()>0) {
-							v.irAPantallaAE(v, j, m, ene,sprite);
+							men=j.getNombre()+" uso: "+a.getNombre()+".";
+							v.irAPantallaAE(v, j, men, ene,sprite);
 							
 						}else {						
-							
+							v.clip.close();
 							j.setPiso((byte) (j.getPiso()+1));
-							v.irAPantallaC(v, j, "", null);
+							v.irAPantallaO(v,j);
 						}
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block

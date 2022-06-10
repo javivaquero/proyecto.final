@@ -16,11 +16,9 @@ import clases.Jugador;
 
 
 public class Ventana extends JFrame {
-	private JPanel pantallaActual;
-	protected String usuarioLogado;//ES EL USUARIO QUE INICIA SESIÓN EN LA PANTALLALOGIN, HASTA ENTONCES, VALE NULL.
+	private JPanel pantallaActual;//ES EL USUARIO QUE INICIA SESIÓN EN LA PANTALLALOGIN, HASTA ENTONCES, VALE NULL.
 	protected Jugador j;
-protected Clip clip;
-	
+	protected Clip clip;
 	
 	public Ventana() {
 		
@@ -31,7 +29,7 @@ protected Clip clip;
 		//this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		//this.setUndecorated(true);
 		
-		this.setTitle("EL JUEGO");
+		this.setTitle("RespectYourElders");
 		this.setIconImage(new ImageIcon("./iconos/icon.png").getImage());
 		//this.setAlwaysOnTop(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -69,6 +67,16 @@ protected Clip clip;
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual=null;			
 		this.pantallaActual=new PantallaAtaqueEnemigo(this, j,m,en,sprite);
+		this.pantallaActual.setVisible(true);
+		this.setContentPane(pantallaActual);
+			
+			}
+	
+	public void irAPantallaO(Ventana v,Jugador j) throws IOException, LineUnavailableException {
+
+		this.pantallaActual.setVisible(false);
+		this.pantallaActual=null;			
+		this.pantallaActual=new PantallaSeleccionObjeto(this, j);
 		this.pantallaActual.setVisible(true);
 		this.setContentPane(pantallaActual);
 			

@@ -29,6 +29,9 @@ public class Objeto {
 		this.pAAumentados = pAAumentados;
 		this.pDAumentados = pDAumentados;
 	}
+	public Objeto() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 }

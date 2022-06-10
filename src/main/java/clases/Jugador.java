@@ -23,12 +23,13 @@ public class Jugador extends Personaje{
 	private byte pisoActual;
 	private byte piso;
 	private Clase clase;
+	private Tipo tipo;
 	
 	public ArrayList<Objeto> getObjetos() {
 		return objetos;
 	}
 	public void setObjetos(ArrayList<Objeto> objetos) {
-		this.objetos = objetos;
+		this.objetos = new ArrayList<Objeto>();
 	}
 	public ArrayList<Consumible> getInventario() {
 		return inventario;
@@ -42,7 +43,7 @@ public class Jugador extends Personaje{
 	public void setPisoActual(byte pisoActual) {
 		this.pisoActual = pisoActual;
 	}
-	
+	//hacer que jugador tenga tipo
 	public Jugador(String nombre, short pVida, short pAtaque, short pDefensa, ArrayList<Ataque> ataques,
 			byte pVelocidad, ArrayList<Objeto> objetos, ArrayList<Consumible> inventario,byte piso,
 			Clase clase) {
@@ -180,6 +181,42 @@ public class Jugador extends Personaje{
 	}
 	public void setPiso(byte piso) {
 		this.piso = piso;
+	}
+	
+	public Objeto listaObjetosCurativos(Jugador j) {
+		
+		Random r=new Random();
+		Objeto o=new Objeto();
+		ArrayList<Objeto>listaObjetos=new ArrayList<Objeto>();
+		
+		//0
+		Objeto o1=new Objeto((short)100,(short)0,(short)0);
+		listaObjetos.add(o1);
+		//1
+		Objeto o2=new Objeto((short)200,(short)0,(short)0);
+		listaObjetos.add(o2);
+		//2
+		Objeto o3=new Objeto((short)500,(short)0,(short)0);
+		listaObjetos.add(o3);
+		//3
+		Objeto o4=new Objeto((short)999,(short)0,(short)0);
+		listaObjetos.add(o4);
+		if(j.getPiso()<5) {
+			o=listaObjetos.get(r.nextInt(1));
+		}
+		if(j.getPiso()>5&&j.getPiso()>10) {
+			o=listaObjetos.get(2);
+		}
+		if(j.getPiso()>10) {
+			o=listaObjetos.get(3);
+		}
+		return o;
+	}
+	public Clase getClase() {
+		return clase;
+	}
+	public void setClase(Clase clase) {
+		this.clase = clase;
 	}
 	
 }
