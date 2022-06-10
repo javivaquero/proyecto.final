@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,13 +12,14 @@ import javax.swing.JPanel;
 
 import clases.Enemigo;
 import clases.Jugador;
-import javazoom.jl.decoder.JavaLayerException;
+
 
 
 public class Ventana extends JFrame {
 	private JPanel pantallaActual;
 	protected String usuarioLogado;//ES EL USUARIO QUE INICIA SESIÓN EN LA PANTALLALOGIN, HASTA ENTONCES, VALE NULL.
 	protected Jugador j;
+protected Clip clip;
 	
 	
 	public Ventana() {
@@ -53,11 +55,20 @@ public class Ventana extends JFrame {
 		this.setContentPane(pantallaActual);
 	}
 	
-	public void irAPantallaC(Ventana v,Jugador j,Enemigo en) throws IOException, JavaLayerException, LineUnavailableException {
-		this.j=j;
+	public void irAPantallaC(Ventana v,Jugador j,String m,Enemigo en) throws IOException, LineUnavailableException {
+
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual=null;			
-		this.pantallaActual=new PantallaCombate(this, j,null);
+		this.pantallaActual=new PantallaCombate(this, j,m,en);
+		this.pantallaActual.setVisible(true);
+		this.setContentPane(pantallaActual);
+			
+			}
+	
+	public void irAPantallaAE(Ventana v,Jugador j,String m,Enemigo en,ImageIcon sprite) throws IOException, LineUnavailableException {
+		this.pantallaActual.setVisible(false);
+		this.pantallaActual=null;			
+		this.pantallaActual=new PantallaAtaqueEnemigo(this, j,m,en,sprite);
 		this.pantallaActual.setVisible(true);
 		this.setContentPane(pantallaActual);
 			

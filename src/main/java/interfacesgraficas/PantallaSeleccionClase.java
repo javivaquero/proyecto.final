@@ -22,7 +22,6 @@ import clases.Consumible;
 import clases.Jugador;
 import clases.Objeto;
 import enums.Clase;
-import javazoom.jl.decoder.JavaLayerException;
 
 public class PantallaSeleccionClase extends JPanel{
 
@@ -55,11 +54,8 @@ public class PantallaSeleccionClase extends JPanel{
 			ArrayList<Consumible>cs=new ArrayList<Consumible>();
 			j=new Jugador(user,(short)60,(short)5,(short)1,a,(byte)40,o,cs,(byte)1,Clase.MAGO);
 			try {
-				ventana.irAPantallaC(ventana, j,null);
+				ventana.irAPantallaC(ventana, j,"",null);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (JavaLayerException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (LineUnavailableException e1) {
@@ -111,6 +107,15 @@ public class PantallaSeleccionClase extends JPanel{
 				ArrayList<Objeto>o=new ArrayList<Objeto>();
 				ArrayList<Consumible>cs=new ArrayList<Consumible>();
 				j=new Jugador(user,(short)100,(short)2,(short)3,a,(byte)30,o,cs,(byte)1,Clase.TANQUE);
+				try {
+					ventana.irAPantallaC(ventana, j,"",null);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (LineUnavailableException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -130,6 +135,15 @@ public class PantallaSeleccionClase extends JPanel{
 				ArrayList<Objeto>o=new ArrayList<Objeto>();
 				ArrayList<Consumible>cs=new ArrayList<Consumible>();				
 				j=new Jugador(user,(short)65,(short)4,(short)2,a,(byte)60,o,cs,(byte)1,Clase.ARQUERO);
+				try {
+					ventana.irAPantallaC(ventana, j,"",null);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (LineUnavailableException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		GridBagConstraints gbc_botonArquero = new GridBagConstraints();
@@ -147,6 +161,15 @@ public class PantallaSeleccionClase extends JPanel{
 				ArrayList<Objeto>o=new ArrayList<Objeto>();
 				ArrayList<Consumible>cs=new ArrayList<Consumible>();				
 				j=new Jugador(user,(short)40,(short)7,(short)1,a,(byte)80,o,cs,(byte)1,Clase.ASESINO);
+				try {
+					ventana.irAPantallaC(ventana, j,"",null);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (LineUnavailableException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		GridBagConstraints gbc_botonAsesino = new GridBagConstraints();

@@ -15,19 +15,6 @@ import enums.Tipo;
 public class Enemigo extends Personaje {
 
 	private Tipo tipo;
-	private ImageIcon eSprite;
-	
-	
-	
-
-
-	public ImageIcon geteSprite() {
-		return eSprite;
-	}
-
-	public void seteSprite(ImageIcon eSprite) {
-		this.eSprite = eSprite;
-	}
 
 	public Tipo getTipo() {
 		return tipo;
@@ -38,7 +25,7 @@ public class Enemigo extends Personaje {
 	}
 
 	public Enemigo(String nombre, short pVida, short pAtaque, short pDefensa, ArrayList<Ataque> ataques,
-			byte pVelocidad, Tipo tipo, ImageIcon eSprite) {
+			byte pVelocidad, Tipo tipo) {
 		super(nombre, pVida, pAtaque, pDefensa, ataques, pVelocidad);
 		this.tipo = tipo;
 	}
@@ -47,13 +34,11 @@ public class Enemigo extends Personaje {
 		
 	}
 	
-
-	
-	
-	private void atacarJugador(Jugador j) {
+	//HACER QUE LO MANDE A m de PANTALLAATAQUEENEMIGO
+	public void atacarJugador(Jugador j,Ataque a) {
 		//los e son this
 		Random r=new Random();
-		Ataque atEn=this.getAtaques().get(r.nextInt(this.getAtaques().size()));
+		Ataque atEn=a;
 		byte acierto=(byte) r.nextInt(100);
 		if(acierto<=atEn.getPrecision()) {
 			short vJActual=(short) (j.getpVida()-(this.getpAtaque()+atEn.getPotencia())/j.getpDefensa());
@@ -65,14 +50,13 @@ public class Enemigo extends Personaje {
 		}
 	}
 
-	public Enemigo listaEnemigos() throws IOException {
+	public Enemigo listaEnemigos(byte e) throws IOException {
 		Random r=new Random();
-		BufferedImage e1Sprite = ImageIO.read(new File("./imagenes/e1.png"));
 		ArrayList<Enemigo>en=new ArrayList<Enemigo>();
 		
 		//0
 		
-		Enemigo e1=new Enemigo("e1", (short)20, (short)1, (short)2, this.getAtaques(),(byte) 55, Tipo.FISICO, eSprite=new ImageIcon(e1Sprite));
+		Enemigo e1=new Enemigo("Starman", (short)20, (short)1, (short)2, this.getAtaques(),(byte) 55, Tipo.FISICO);
 		ArrayList<Ataque>ataquese1=new ArrayList<Ataque>();
 		ataquese1.add(this.listaAtaques().get(0));
 		ataquese1.add(this.listaAtaques().get(1));
@@ -81,22 +65,29 @@ public class Enemigo extends Personaje {
 		
 		//1
 		
-		Enemigo e2=new Enemigo("e2", (short)25, (short)2, (short)2, this.getAtaques(),(byte) 40, Tipo.HIELO,eSprite=new ImageIcon(e1Sprite));
-		e2.setAtaques(ataquese1);
+		Enemigo e2=new Enemigo("Jack Frost", (short)200, (short)2, (short)2, this.getAtaques(),(byte) 40, Tipo.HIELO);
+		ArrayList<Ataque>ataquese2=new ArrayList<Ataque>();
+		ataquese2.add(this.listaAtaques().get(2));
+		ataquese2.add(this.listaAtaques().get(3));
+		e2.setAtaques(ataquese2);
 		en.add(e2);
-		
-		int enR=r.nextInt(en.size());
-		return en.get(enR);
+		return en.get(e);
 	}
 	
 	public ArrayList<Ataque> listaAtaques() {
 		ArrayList<Ataque>listaAtaques=new ArrayList<Ataque>();
 		//0
-		Ataque a1=new Ataque("a1",(short)3,(byte)60,Tipo.HIELO);
+		Ataque a1=new Ataque("PK Freeze",(short)3,(byte)60,Tipo.HIELO);
 		listaAtaques.add(a1);
 		//1
-		Ataque a2=new Ataque("a2",(short)2,(byte)100,Tipo.FISICO);
+		Ataque a2=new Ataque("PK Fire",(short)2,(byte)100,Tipo.FUEGO);
 		listaAtaques.add(a2);
+		//2
+		Ataque a3=new Ataque("Bufudyne",(short)5,(byte)60,Tipo.HIELO);
+		listaAtaques.add(a3);
+		//3
+		Ataque a4=new Ataque("Agidyne",(short)4,(byte)80,Tipo.FUEGO);
+		listaAtaques.add(a4);
 		return listaAtaques;
 	}
 }

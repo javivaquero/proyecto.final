@@ -13,8 +13,7 @@ import enums.Clase;
 import enums.Tipo;
 import excepciones.NombreInvalidoException;
 import interfacesgraficas.Ventana;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
+
 import utils.ConexionBD;
 
 public class Jugador extends Personaje{
@@ -78,7 +77,6 @@ public class Jugador extends Personaje{
 		}
 		this.objetos = new ArrayList<Objeto>();
 		this.inventario = new ArrayList<Consumible>();
-		this.pisoActual = pisoActual;
 		this.setPiso(piso);
 		
 	}
@@ -133,16 +131,17 @@ public class Jugador extends Personaje{
 	
 	}	
 	
-	public void atacarEnemigo(Enemigo e,Ataque a,byte at) throws FileNotFoundException, JavaLayerException {
+	public void atacarEnemigo(Enemigo e,Ataque a,byte at) throws FileNotFoundException {
 		Random r=new Random();
-		//cambiar this por this
+	
 		
 		Ataque atJ=this.getAtaques().get(at);
 		byte acierto=(byte) r.nextInt(100);
 		if(acierto<atJ.getPrecision()) {
-		short vEActual=0;
+		short vEActual=e.getpVida();
 		switch(atJ.getTipo()) {
 		default:
+			
 			break;
 		case FISICO:
 				vEActual=(short) (e.getpVida()-(this.getpAtaque()+atJ.getPotencia())/this.getpDefensa());
@@ -150,16 +149,22 @@ public class Jugador extends Personaje{
 		case FUEGO:
 				if(e.getTipo()==Tipo.HIELO) {
 					vEActual=(short) (e.getpVida()-(2)*(this.getpAtaque()+atJ.getPotencia())/this.getpDefensa());
+				}else {
+					vEActual=(short) (e.getpVida()-(this.getpAtaque()+atJ.getPotencia())/this.getpDefensa());
 				}
 			break;
 		case ELECTRICO:
 			if(e.getTipo()==Tipo.FUEGO) {
 				vEActual=(short) (e.getpVida()-(2)*(this.getpAtaque()+atJ.getPotencia())/this.getpDefensa());
+			}else {
+				vEActual=(short) (e.getpVida()-(this.getpAtaque()+atJ.getPotencia())/this.getpDefensa());
 			}
 			break;
 		case HIELO:
 			if(e.getTipo()==Tipo.ELECTRICO) {
 				vEActual=(short) (e.getpVida()-(2)*(this.getpAtaque()+atJ.getPotencia())/this.getpDefensa());
+			}else {
+				vEActual=(short) (e.getpVida()-(this.getpAtaque()+atJ.getPotencia())/this.getpDefensa());
 			}
 			break;
 		}
