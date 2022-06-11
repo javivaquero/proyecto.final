@@ -96,8 +96,53 @@ public class PantallaCombate extends JPanel{
 					// TODO Auto-generated catch block
 					e2.printStackTrace();	
 				}
-				break;			
+				break;
+			
+			//PISO 3
+				
+			case 3:
+				en=en.listaEnemigos((byte) 2);
+				try {					
+					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/3.wav"));				
+					v.clip=AudioSystem.getClip();				
+					v.clip.open(audio);
+					v.clip.start();	
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
+				} catch (UnsupportedAudioFileException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();	
+				}
+				break;
+			
+			
+			//PISO 4	
+				
+			case 4:
+				en=en.listaEnemigos((byte) 3);
+				try {					
+					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/4.wav"));				
+					v.clip=AudioSystem.getClip();				
+					v.clip.open(audio);
+					v.clip.start();	
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
+				} catch (UnsupportedAudioFileException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();	
+				}
+				break;
+				
+				
 			}
+			
+			
+			
+			
 			this.ene=en;
 			
 		}else {
@@ -117,6 +162,14 @@ public class PantallaCombate extends JPanel{
 		//ENEMIGO 2	
 		case 2:
 			sprite=new ImageIcon("./imagenes/e2.png");
+			break;		
+		//ENEMIGO 3
+		case 3:
+			sprite=new ImageIcon("./imagenes/e3.png");
+			break;
+		//ENEMIGO 4
+		case 4:
+			sprite=new ImageIcon("./imagenes/e4.png");
 			break;
 		}
 		JPanel panelAccion = new JPanel();

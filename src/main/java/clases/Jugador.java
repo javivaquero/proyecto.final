@@ -62,10 +62,46 @@ public class Jugador extends Personaje{
 			this.setAtaques(movimientos);
 			break;
 		case TANQUE:
+			Ataque a1=new Ataque("Golpe",(short)4,(byte)100,Tipo.FISICO,(byte)0);
+			movimientos.add(a1);
+			//1
+			Ataque a2=new Ataque("Quemar",(short)7,(byte)75,Tipo.FUEGO,(byte)5);
+			movimientos.add(a2);
+			//2
+			Ataque a3=new Ataque("Congelar",(short)6,(byte)80,Tipo.HIELO,(byte)4);
+			movimientos.add(a3);
+			//3
+			Ataque a4=new Ataque("Rayo",(short)5,(byte)95,Tipo.ELECTRICO,(byte)3);
+			movimientos.add(a4);
+			this.setAtaques(movimientos);
 			break;
 		case ARQUERO:
+			Ataque aa1=new Ataque("Golpe",(short)4,(byte)100,Tipo.FISICO,(byte)0);
+			movimientos.add(aa1);
+			//1
+			Ataque aa2=new Ataque("Quemar",(short)7,(byte)75,Tipo.FUEGO,(byte)5);
+			movimientos.add(aa2);
+			//2
+			Ataque aa3=new Ataque("Congelar",(short)6,(byte)80,Tipo.HIELO,(byte)4);
+			movimientos.add(aa3);
+			//3
+			Ataque aa4=new Ataque("Rayo",(short)5,(byte)95,Tipo.ELECTRICO,(byte)3);
+			movimientos.add(aa4);
+			this.setAtaques(movimientos);
 			break;
 		case ASESINO:
+			Ataque aaa1=new Ataque("Golpe",(short)4,(byte)100,Tipo.FISICO,(byte)0);
+			movimientos.add(aaa1);
+			//1
+			Ataque aaa2=new Ataque("Quemar",(short)7,(byte)75,Tipo.FUEGO,(byte)5);
+			movimientos.add(aaa2);
+			//2
+			Ataque aaa3=new Ataque("Congelar",(short)6,(byte)80,Tipo.HIELO,(byte)4);
+			movimientos.add(aaa3);
+			//3
+			Ataque aaa4=new Ataque("Rayo",(short)5,(byte)95,Tipo.ELECTRICO,(byte)3);
+			movimientos.add(aaa4);
+			this.setAtaques(movimientos);
 			break;	
 			
 		default:
@@ -199,16 +235,16 @@ public class Jugador extends Personaje{
 		ArrayList<Objeto>listaObjetos=new ArrayList<Objeto>();
 		
 		//0
-		Objeto o1=new Objeto("Zumo de Naranja",(short)100,(short)0,(short)0);
+		Objeto o1=new Objeto("Zumo de Naranja",(short)200,(short)0,(short)0);
 		listaObjetos.add(o1);
 		//1
-		Objeto o2=new Objeto("Red Bull",(short)200,(short)0,(short)0);
+		Objeto o2=new Objeto("Red Bull",(short)500,(short)0,(short)0);
 		listaObjetos.add(o2);
 		//2
-		Objeto o3=new Objeto("Nuka Cola",(short)500,(short)0,(short)0);
+		Objeto o3=new Objeto("Nuka Cola",(short)600,(short)0,(short)0);
 		listaObjetos.add(o3);
 		//3
-		Objeto o4=new Objeto("Santo Grial",(short)600,(short)0,(short)0);
+		Objeto o4=new Objeto("Santo Grial",(short)800,(short)0,(short)0);
 		listaObjetos.add(o4);
 		if(j.getPiso()<5) {
 			o=listaObjetos.get(r.nextInt(1));
@@ -259,16 +295,16 @@ public Objeto listaObjetosOfensivos(Jugador j) {
 	ArrayList<Objeto>listaObjetos=new ArrayList<Objeto>();
 	
 	//0
-	Objeto o1=new Objeto("Espada de Juguete",(short)0,(short)5,(short)0);
+	Objeto o1=new Objeto("Espada de Juguete",(short)0,(short)15,(short)0);
 	listaObjetos.add(o1);
 	//1
-	Objeto o2=new Objeto("Espada de Fuego",(short)0,(short)10,(short)0);
+	Objeto o2=new Objeto("Espada de Fuego",(short)0,(short)30,(short)0);
 	listaObjetos.add(o2);
 	//2
-	Objeto o3=new Objeto("Master Sword",(short)0,(short)20,(short)0);
+	Objeto o3=new Objeto("Master Sword",(short)0,(short)60,(short)0);
 	listaObjetos.add(o3);
 	//3
-	Objeto o4=new Objeto("Evoker",(short)0,(short)40,(short)0);
+	Objeto o4=new Objeto("Evoker",(short)0,(short)120,(short)0);
 	listaObjetos.add(o4);
 	if(j.getPiso()<4) {
 		o=listaObjetos.get(0);
