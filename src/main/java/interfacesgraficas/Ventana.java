@@ -81,5 +81,14 @@ public class Ventana extends JFrame {
 		this.setContentPane(pantallaActual);
 			
 			}
+	public void irAPantallaNO(Ventana v,Jugador j) throws IOException, LineUnavailableException {
+
+		this.pantallaActual.setVisible(false);
+		this.pantallaActual=null;			
+		this.pantallaActual=new PantallaNuevoOpenente(this, j);
+		this.pantallaActual.setVisible(true);
+		this.setContentPane(pantallaActual);
+			
+			}
 	
 }

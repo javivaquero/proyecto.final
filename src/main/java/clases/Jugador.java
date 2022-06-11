@@ -20,11 +20,10 @@ public class Jugador extends Personaje{
 
 	private ArrayList<Objeto>objetos;
 	private ArrayList<Consumible>inventario;
-	private byte pisoActual;
 	private byte piso;
 	private Clase clase;
 	private Tipo tipo;
-	
+	private byte pp;
 	public ArrayList<Objeto> getObjetos() {
 		return objetos;
 	}
@@ -37,31 +36,26 @@ public class Jugador extends Personaje{
 	public void setInventario(ArrayList<Consumible> inventario) {
 		this.inventario = inventario;
 	}
-	public byte getPisoActual() {
-		return pisoActual;
-	}
-	public void setPisoActual(byte pisoActual) {
-		this.pisoActual = pisoActual;
-	}
+
 	//hacer que jugador tenga tipo
 	public Jugador(String nombre, short pVida, short pAtaque, short pDefensa, ArrayList<Ataque> ataques,
 			byte pVelocidad, ArrayList<Objeto> objetos, ArrayList<Consumible> inventario,byte piso,
-			Clase clase) {
+			Clase clase,Tipo tipo,byte pp) {
 		super(nombre, pVida, pAtaque, pDefensa, ataques, pVelocidad);
 		ArrayList<Ataque> movimientos=new ArrayList<Ataque>();
 		switch(clase) {
 		case MAGO:
 			//0	
-			Ataque golpe=new Ataque("Golpe",(short)4,(byte)100,Tipo.FISICO);
+			Ataque golpe=new Ataque("Golpe",(short)4,(byte)100,Tipo.FISICO,(byte)0);
 			movimientos.add(golpe);
 			//1
-			Ataque quemar=new Ataque("Quemar",(short)7,(byte)75,Tipo.FUEGO);
+			Ataque quemar=new Ataque("Quemar",(short)7,(byte)75,Tipo.FUEGO,(byte)5);
 			movimientos.add(quemar);
 			//2
-			Ataque congelar=new Ataque("Congelar",(short)6,(byte)80,Tipo.HIELO);
+			Ataque congelar=new Ataque("Congelar",(short)6,(byte)80,Tipo.HIELO,(byte)4);
 			movimientos.add(congelar);
 			//3
-			Ataque rayo=new Ataque("Rayo",(short)5,(byte)95,Tipo.ELECTRICO);
+			Ataque rayo=new Ataque("Rayo",(short)5,(byte)95,Tipo.ELECTRICO,(byte)3);
 			movimientos.add(rayo);
 			this.setAtaques(movimientos);
 			break;
@@ -79,9 +73,17 @@ public class Jugador extends Personaje{
 		this.objetos = new ArrayList<Objeto>();
 		this.inventario = new ArrayList<Consumible>();
 		this.setPiso(piso);
-		
+		this.tipo=tipo;
+		this.clase=clase;
+		this.pp=pp;
 	}
 	
+	public Tipo getTipo() {
+		return tipo;
+	}
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
 	public Jugador() {
 		
 	}
@@ -140,6 +142,7 @@ public class Jugador extends Personaje{
 		byte acierto=(byte) r.nextInt(100);
 		if(acierto<atJ.getPrecision()) {
 		short vEActual=e.getpVida();
+		byte pp=this.getPp();
 		switch(atJ.getTipo()) {
 		default:
 			
@@ -170,11 +173,15 @@ public class Jugador extends Personaje{
 			break;
 		}
 		e.setpVida(vEActual);
-		System.out.println(this.getNombre()+" usó "+atJ.getNombre());
-		System.out.println("Vida de "+e.getNombre()+" : "+e.getpVida());
-		}else {
-			System.out.println("El ataque de "+this.getNombre()+" falló!");
+		pp-=atJ.getCostePP();
+		this.setPp(pp);
 		}
+	}
+	public byte getPp() {
+		return pp;
+	}
+	public void setPp(byte pp) {
+		this.pp = pp;
 	}
 	public byte getPiso() {
 		return piso;
@@ -190,16 +197,16 @@ public class Jugador extends Personaje{
 		ArrayList<Objeto>listaObjetos=new ArrayList<Objeto>();
 		
 		//0
-		Objeto o1=new Objeto((short)100,(short)0,(short)0);
+		Objeto o1=new Objeto("Zumo de Naranja",(short)100,(short)0,(short)0);
 		listaObjetos.add(o1);
 		//1
-		Objeto o2=new Objeto((short)200,(short)0,(short)0);
+		Objeto o2=new Objeto("Red Bull",(short)200,(short)0,(short)0);
 		listaObjetos.add(o2);
 		//2
-		Objeto o3=new Objeto((short)500,(short)0,(short)0);
+		Objeto o3=new Objeto("Nuka Cola",(short)500,(short)0,(short)0);
 		listaObjetos.add(o3);
 		//3
-		Objeto o4=new Objeto((short)999,(short)0,(short)0);
+		Objeto o4=new Objeto("Santo Grial",(short)600,(short)0,(short)0);
 		listaObjetos.add(o4);
 		if(j.getPiso()<5) {
 			o=listaObjetos.get(r.nextInt(1));
@@ -212,6 +219,66 @@ public class Jugador extends Personaje{
 		}
 		return o;
 	}
+	
+public Objeto listaObjetosDefensivos(Jugador j) {
+		
+		Random r=new Random();
+		Objeto o=new Objeto();
+		ArrayList<Objeto>listaObjetos=new ArrayList<Objeto>();
+		
+		//0
+		Objeto o1=new Objeto("Cota de malla",(short)0,(short)0,(short)1);
+		listaObjetos.add(o1);
+		//1
+		Objeto o2=new Objeto("Pechera de hierro",(short)0,(short)0,(short)1);
+		listaObjetos.add(o2);
+		//2
+		Objeto o3=new Objeto("Camiseta de obsidiana",(short)0,(short)0,(short)2);
+		listaObjetos.add(o3);
+		//3
+		Objeto o4=new Objeto("Indestructible",(short)0,(short)0,(short)3);
+		listaObjetos.add(o4);
+		if(j.getPiso()<5) {
+			o=listaObjetos.get(r.nextInt(1));
+		}
+		if(j.getPiso()>5&&j.getPiso()>10) {
+			o=listaObjetos.get(2);
+		}
+		if(j.getPiso()>10) {
+			o=listaObjetos.get(3);
+		}
+		return o;
+	}
+
+public Objeto listaObjetosOfensivos(Jugador j) {
+	
+	Random r=new Random();
+	Objeto o=new Objeto();
+	ArrayList<Objeto>listaObjetos=new ArrayList<Objeto>();
+	
+	//0
+	Objeto o1=new Objeto("Espada de Juguete",(short)0,(short)5,(short)0);
+	listaObjetos.add(o1);
+	//1
+	Objeto o2=new Objeto("Pechera de hierro",(short)0,(short)10,(short)0);
+	listaObjetos.add(o2);
+	//2
+	Objeto o3=new Objeto("Camiseta de obsidiana",(short)0,(short)20,(short)0);
+	listaObjetos.add(o3);
+	//3
+	Objeto o4=new Objeto("Indestructible",(short)0,(short)40,(short)0);
+	listaObjetos.add(o4);
+	if(j.getPiso()<5) {
+		o=listaObjetos.get(r.nextInt(1));
+	}
+	if(j.getPiso()>5&&j.getPiso()>10) {
+		o=listaObjetos.get(2);
+	}
+	if(j.getPiso()>10) {
+		o=listaObjetos.get(3);
+	}
+	return o;
+}
 	public Clase getClase() {
 		return clase;
 	}

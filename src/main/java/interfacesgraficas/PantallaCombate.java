@@ -46,8 +46,10 @@ public class PantallaCombate extends JPanel{
 	private Enemigo ene;
 	protected ImageIcon sprite;
 	private String men;
+
 	public PantallaCombate(Ventana v,Jugador j,String m,Enemigo en) throws IOException, LineUnavailableException {		
 		this.men=m;
+		
 		if(en==null) {		
 			en=new Enemigo();			
 			switch(j.getPiso()) {
@@ -96,6 +98,7 @@ public class PantallaCombate extends JPanel{
 			this.ene=en;
 		}
 		
+		
 		BufferedImage vFImg = ImageIO.read(new File("imagenes/vFondo.png"));
 		setBackground(Color.BLACK);
 		Random r= new Random();
@@ -113,9 +116,17 @@ public class PantallaCombate extends JPanel{
 		JPanel panelAccion = new JPanel();
 		panelAccion.setBorder(new LineBorder(Color.WHITE));
 		panelAccion.setBackground(Color.BLACK);
-		panelAccion.setBounds(29, 554, 275, 190);
+		panelAccion.setBounds(60, 481, 275, 258);
 		add(panelAccion);
 		panelAccion.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JLabel accion = new JLabel("Accion");
+		accion.setBackground(Color.BLACK);
+		accion.setBorder(new LineBorder(Color.WHITE));
+		accion.setHorizontalAlignment(SwingConstants.CENTER);
+		accion.setForeground(Color.WHITE);
+		accion.setFont(new Font("StatusPlz", Font.PLAIN, 21));
+		panelAccion.add(accion);
 		
 		JButton ataque0 = new BotonI(j.getAtaques().get(0).toString());
 		ataque0.setFont(new Font("StatusPlz", Font.PLAIN, 16));
@@ -194,8 +205,17 @@ public class PantallaCombate extends JPanel{
 		ataque3.setBounds(109, 33, 87, 23);
 		panelAccion.add(ataque3);
 		
+		JButton cCurativo = new BotonI("Pocion vida");
+		panelAccion.add(cCurativo);
+		
+		JButton cMasPoder = new BotonI("Pocion fuerza");
+		panelAccion.add(cMasPoder);
+		
+		JButton cMasPP = new BotonI("Mas PP");
+		panelAccion.add(cMasPP);
+		
 		JPanel panelVida = new JPanel();
-		panelVida.setBounds(400, 554, 199, 214);
+		panelVida.setBounds(392, 525, 199, 214);
 		panelVida.setOpaque(false);
 		add(panelVida);
 		panelVida.setLayout(null);
@@ -213,7 +233,14 @@ public class PantallaCombate extends JPanel{
 		vJugador.setBounds(75, 84, 114, 34);
 		panelVida.add(vJugador);
 		
-		JLabel zimgFVida = new JLabel(new ImageIcon(vFImg));
+		JLabel pp_Juagador = new JLabel(""+j.getPp()+"");
+		pp_Juagador.setHorizontalAlignment(SwingConstants.CENTER);
+		pp_Juagador.setForeground(Color.BLACK);
+		pp_Juagador.setFont(new Font("Verdana", Font.PLAIN, 36));
+		pp_Juagador.setBounds(75, 139, 124, 34);
+		panelVida.add(pp_Juagador);
+		
+		JLabel zimgFVida = new JLabel(new ImageIcon("./imagenes/vFondo.png"));
 		zimgFVida.setBounds(0, 0, 199, 214);
 		panelVida.add(zimgFVida);
 		
@@ -225,21 +252,47 @@ public class PantallaCombate extends JPanel{
 		panelM.setLayout(null);
 		panelM.setBorder(new LineBorder(Color.WHITE));
 		panelM.setBackground(Color.BLACK);
-		panelM.setBounds(284, 11, 714, 67);
+		panelM.setBounds(60, 11, 903, 67);
 		add(panelM);
 		texto.setForeground(Color.WHITE);
 		texto.setHorizontalAlignment(SwingConstants.CENTER);
 		texto.setFont(new Font("StatusPlz", Font.PLAIN, 17));
-		texto.setBounds(0, 0, 714, 67);
+		texto.setBounds(0, 0, 903, 67);
 		panelM.add(texto);
 		
-		JPanel panelFondo = new JPanel();
-		panelFondo.setBounds(0, 179, 1023, 335);
-		panelFondo.setOpaque(false);
-		add(panelFondo);
+		JPanel panelInfo = new JPanel();
+		panelInfo.setBounds(60, 201, 331, 269);
+		add(panelInfo);
+		panelInfo.setLayout(null);
+		panelInfo.setBorder(new LineBorder(Color.WHITE));
+		panelInfo.setBackground(Color.BLACK);
+		panelInfo.setVisible(true);
 		
-		JLabel imgFondo = new JLabel(new ImageIcon(this.getClass().getResource("f1.gif")));
-		panelFondo.add(imgFondo);
+		JLabel saga  = new JLabel("Saga:  "+en.getSaga());
+		saga.setHorizontalAlignment(SwingConstants.LEFT);
+		saga.setForeground(Color.WHITE);
+		saga.setFont(new Font("StatusPlz", Font.PLAIN, 18));
+		saga.setBounds(1, 91, 330, 75);
+		panelInfo.add(saga);
+		
+		JLabel fLanzamiento = new JLabel("Fecha de lanzamiento:  "+en.getfLanzamiento());
+		fLanzamiento.setHorizontalAlignment(SwingConstants.LEFT);
+		fLanzamiento.setForeground(Color.WHITE);
+		fLanzamiento.setFont(new Font("StatusPlz", Font.PLAIN, 21));
+		fLanzamiento.setBounds(1, 180, 330, 75);
+		panelInfo.add(fLanzamiento);
+		
+		JLabel nombreEnemigo = new JLabel(en.getNombre());
+		nombreEnemigo.setHorizontalAlignment(SwingConstants.CENTER);
+		nombreEnemigo.setForeground(Color.WHITE);
+		nombreEnemigo.setFont(new Font("StatusPlz", Font.PLAIN, 21));
+		nombreEnemigo.setBorder(new LineBorder(Color.WHITE));
+		nombreEnemigo.setBounds(0, 0, 331, 75);
+		panelInfo.add(nombreEnemigo);
+		
+		JLabel imgFondo = new JLabel((new ImageIcon(this.getClass().getResource("f1.gif"))));
+		imgFondo.setBounds(0, 0, 1023, 768);
+		add(imgFondo);
 		
 		
 		ataque3.addMouseListener(new MouseAdapter() {

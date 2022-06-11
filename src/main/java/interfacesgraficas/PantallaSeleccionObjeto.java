@@ -48,9 +48,7 @@ public class PantallaSeleccionObjeto extends JPanel	{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}				
-		
 		setForeground(Color.BLACK);
-		setLayout(null);
 		BufferedImage vFImg = ImageIO.read(new File("imagenes/vFondo.png"));
 		setBackground(Color.BLACK);
 		Random r= new Random();
@@ -68,13 +66,14 @@ public class PantallaSeleccionObjeto extends JPanel	{
 			public void mouseClicked(MouseEvent e) {
 				ArrayList<Objeto>arrObjetos=j.getObjetos();
 				arrObjetos.add(j.listaObjetosCurativos(j));
+				
 				j.setObjetos(arrObjetos);
 				j.setpVida((short) (j.getpVida()+arrObjetos.get(arrObjetos.size()-1).getpVAumentados()));
 				j.setpDefensa((short) (j.getpDefensa()+arrObjetos.get(arrObjetos.size()-1).getpDAumentados()));
 				j.setpAtaque((short) (j.getpAtaque()+arrObjetos.get(arrObjetos.size()-1).getpAAumentados()));
 				v.clip.close();
 				try {
-					v.irAPantallaC(v, j, "", null);
+					v.irAPantallaNO(v, j);
 				} catch (IOException | LineUnavailableException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -89,12 +88,50 @@ public class PantallaSeleccionObjeto extends JPanel	{
 		panelAccion.add(botonMasVida);
 		
 		BotonI BotonMasDefensa = new BotonI((String) null);
+		BotonMasDefensa.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ArrayList<Objeto>arrObjetos=j.getObjetos();
+				arrObjetos.add(j.listaObjetosDefensivos(j));
+				
+				j.setObjetos(arrObjetos);
+				j.setpVida((short) (j.getpVida()+arrObjetos.get(arrObjetos.size()-1).getpVAumentados()));
+				j.setpDefensa((short) (j.getpDefensa()+arrObjetos.get(arrObjetos.size()-1).getpDAumentados()));
+				j.setpAtaque((short) (j.getpAtaque()+arrObjetos.get(arrObjetos.size()-1).getpAAumentados()));
+				v.clip.close();
+				try {
+					v.irAPantallaNO(v, j);
+				} catch (IOException | LineUnavailableException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+			}
+		});
 		BotonMasDefensa.setText("DEF++");
 		BotonMasDefensa.setFont(new Font("StatusPlz", Font.PLAIN, 32));
 		BotonMasDefensa.setBounds(344, 0, 334, 153);
 		panelAccion.add(BotonMasDefensa);
 		
 		BotonI botonMasFuerza = new BotonI((String) null);
+		botonMasFuerza.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ArrayList<Objeto>arrObjetos=j.getObjetos();
+				arrObjetos.add(j.listaObjetosOfensivos(j));
+				
+				j.setObjetos(arrObjetos);
+				j.setpVida((short) (j.getpVida()+arrObjetos.get(arrObjetos.size()-1).getpVAumentados()));
+				j.setpDefensa((short) (j.getpDefensa()+arrObjetos.get(arrObjetos.size()-1).getpDAumentados()));
+				j.setpAtaque((short) (j.getpAtaque()+arrObjetos.get(arrObjetos.size()-1).getpAAumentados()));
+				v.clip.close();
+				try {
+					v.irAPantallaNO(v, j);
+				} catch (IOException | LineUnavailableException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+			}
+		});
 		botonMasFuerza.setText("ATK++");
 		botonMasFuerza.setFont(new Font("StatusPlz", Font.PLAIN, 32));
 		botonMasFuerza.setBounds(688, 0, 316, 153);
@@ -106,7 +143,12 @@ public class PantallaSeleccionObjeto extends JPanel	{
 		panelM.setBounds(284, 11, 714, 67);
 		add(panelM);
 		JLabel texto = new JLabel();
-		texto.setText("Selecciona tu Nuevo Objeto");
+		if(j.getPiso()%2==0) {
+			texto.setText("Selecciona tu Nuevo Objeto, has recibido un consumible aleatorio.");
+		}else {
+			texto.setText("Selecciona tu Nuevo Objeto.");
+		}
+		
 		texto.setForeground(Color.WHITE);
 		texto.setHorizontalAlignment(SwingConstants.CENTER);
 		texto.setFont(new Font("StatusPlz", Font.PLAIN, 26));
