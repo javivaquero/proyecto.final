@@ -24,6 +24,8 @@ public class Jugador extends Personaje{
 	private Clase clase;
 	private Tipo tipo;
 	private byte pp;
+	
+	
 	public ArrayList<Objeto> getObjetos() {
 		return objetos;
 	}
@@ -37,7 +39,7 @@ public class Jugador extends Personaje{
 		this.inventario = inventario;
 	}
 
-	//hacer que jugador tenga tipo
+	
 	public Jugador(String nombre, short pVida, short pAtaque, short pDefensa, ArrayList<Ataque> ataques,
 			byte pVelocidad, ArrayList<Objeto> objetos, ArrayList<Consumible> inventario,byte piso,
 			Clase clase,Tipo tipo,byte pp) {
@@ -260,13 +262,13 @@ public Objeto listaObjetosOfensivos(Jugador j) {
 	Objeto o1=new Objeto("Espada de Juguete",(short)0,(short)5,(short)0);
 	listaObjetos.add(o1);
 	//1
-	Objeto o2=new Objeto("Pechera de hierro",(short)0,(short)10,(short)0);
+	Objeto o2=new Objeto("Espada de Fuego",(short)0,(short)10,(short)0);
 	listaObjetos.add(o2);
 	//2
-	Objeto o3=new Objeto("Camiseta de obsidiana",(short)0,(short)20,(short)0);
+	Objeto o3=new Objeto("Master Sword",(short)0,(short)20,(short)0);
 	listaObjetos.add(o3);
 	//3
-	Objeto o4=new Objeto("Indestructible",(short)0,(short)40,(short)0);
+	Objeto o4=new Objeto("Evoker",(short)0,(short)40,(short)0);
 	listaObjetos.add(o4);
 	if(j.getPiso()<5) {
 		o=listaObjetos.get(r.nextInt(1));
@@ -284,6 +286,30 @@ public Objeto listaObjetosOfensivos(Jugador j) {
 	}
 	public void setClase(Clase clase) {
 		this.clase = clase;
+	}
+	
+public Consumible listaConsumibles(Jugador j) {
+		Random r=new Random();
+		Consumible c=null;
+		boolean cr=r.nextBoolean();
+		if(j.getPiso()<4) {
+			if(cr==true) {
+				c=new ConsumibleCurativo("Lata cerveza hacendado",(short)100);
+			}else {
+				c=new ConsumibleMasPP("Vino Don Simon",(int)50);
+			}
+			
+		}
+		if(j.getPiso()<8&&j.getPiso()>4) {
+			if(cr==true){
+				c=new ConsumibleCurativo("Porro",(short)300);
+			}else {
+				c=new ConsumibleMasPP("Humunculo",(int)100);
+			}
+			
+		}
+		
+		return c;
 	}
 	
 }

@@ -12,10 +12,14 @@ public class ConsumibleCurativo extends Consumible {
 		this.pVRestaurados = pVRestaurados;
 	}
 
+	
+
 	public ConsumibleCurativo(String nombre, short pVRestaurados) {
 		super(nombre);
 		this.pVRestaurados = pVRestaurados;
 	}
+	
+	
 	
 	
 }

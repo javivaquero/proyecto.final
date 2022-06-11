@@ -23,8 +23,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-
+import clases.ConsumibleCurativo;
 import clases.Ataque;
+import clases.Consumible;
+import clases.ConsumibleCurativo;
 import clases.Jugador;
 import clases.Objeto;
 import componentesvisuales.BotonI;
@@ -66,6 +68,11 @@ public class PantallaSeleccionObjeto extends JPanel	{
 			public void mouseClicked(MouseEvent e) {
 				ArrayList<Objeto>arrObjetos=j.getObjetos();
 				arrObjetos.add(j.listaObjetosCurativos(j));
+				ArrayList<Consumible>arrCons=j.getInventario();
+					
+					if(j.getPiso()%2==0) {
+					j.getInventario().add(j.listaConsumibles(j));
+					}
 				
 				j.setObjetos(arrObjetos);
 				j.setpVida((short) (j.getpVida()+arrObjetos.get(arrObjetos.size()-1).getpVAumentados()));

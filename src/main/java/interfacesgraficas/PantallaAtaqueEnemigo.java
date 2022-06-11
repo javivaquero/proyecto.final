@@ -45,58 +45,13 @@ public class PantallaAtaqueEnemigo extends JPanel {
 		JPanel panelAccion = new JPanel();
 		panelAccion.setBorder(new LineBorder(Color.WHITE));
 		panelAccion.setBackground(Color.BLACK);
-		panelAccion.setBounds(60, 549, 275, 190);
+		panelAccion.setBounds(60, 481, 275, 258);
 		add(panelAccion);
 		panelAccion.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JButton ataque1 = new BotonI(j.getAtaques().get(1).toString());
-		ataque1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				Random r=new Random();
-				Ataque at=en.getAtaques().get(r.nextInt(en.getAtaques().size()));
-				en.atacarJugador(j,at);
-				men="El enemigo uso "+at.getNombre()+", puntos de vida de "+en.getNombre()+": "+en.getpVida();
-				if(j.getpVida()>0) {
-					try {
-						v.irAPantallaC(v, j, men, en);
-					} catch (IOException | LineUnavailableException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}else {
-									
-				}
-			}
-		});
-		ataque1.setFont(new Font("StatusPlz", Font.PLAIN, 16));
-		panelAccion.add(ataque1);
-
-		
-		JButton ataque2 =new BotonI(j.getAtaques().get(2).toString());
-		ataque2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Random r=new Random();
-				Ataque at=en.getAtaques().get(r.nextInt(en.getAtaques().size()));
-				en.atacarJugador(j,at);
-				men="El enemigo uso "+at.getNombre()+", puntos de vida de "+en.getNombre()+": "+en.getpVida();
-				if(j.getpVida()>0) {
-					try {
-						v.irAPantallaC(v, j, men, en);
-					} catch (IOException | LineUnavailableException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}else {
-								
-				}
-			}
-		});
-		ataque2.setFont(new Font("StatusPlz", Font.PLAIN, 16));
-		panelAccion.add(ataque2);
-		
 		JButton ataque0 = new BotonI(j.getAtaques().get(0).toString());
+		ataque0.setBorderPainted(true);
+		ataque0.setBorder(new LineBorder(Color.WHITE));
 		ataque0.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -119,7 +74,58 @@ public class PantallaAtaqueEnemigo extends JPanel {
 		ataque0.setFont(new Font("StatusPlz", Font.PLAIN, 16));
 		panelAccion.add(ataque0);
 		
+				
+				JButton ataque2 =new BotonI(j.getAtaques().get(2).toString());
+				ataque2.setBorder(new LineBorder(Color.WHITE));
+				ataque2.setBorderPainted(true);
+				ataque2.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						Random r=new Random();
+						Ataque at=en.getAtaques().get(r.nextInt(en.getAtaques().size()));
+						en.atacarJugador(j,at);
+						men="El enemigo uso "+at.getNombre()+", puntos de vida de "+en.getNombre()+": "+en.getpVida();
+						if(j.getpVida()>0) {
+							try {
+								v.irAPantallaC(v, j, men, en);
+							} catch (IOException | LineUnavailableException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}else {
+										
+						}
+					}
+				});
+				
+				JButton ataque1 = new BotonI(j.getAtaques().get(1).toString());
+				ataque1.setBorderPainted(true);
+				ataque1.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseReleased(MouseEvent e) {
+						Random r=new Random();
+						Ataque at=en.getAtaques().get(r.nextInt(en.getAtaques().size()));
+						en.atacarJugador(j,at);
+						men="El enemigo uso "+at.getNombre()+", puntos de vida de "+en.getNombre()+": "+en.getpVida();
+						if(j.getpVida()>0) {
+							try {
+								v.irAPantallaC(v, j, men, en);
+							} catch (IOException | LineUnavailableException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}else {
+											
+						}
+					}
+				});
+				ataque1.setFont(new Font("StatusPlz", Font.PLAIN, 16));
+				panelAccion.add(ataque1);
+				ataque2.setFont(new Font("StatusPlz", Font.PLAIN, 16));
+				panelAccion.add(ataque2);
+		
 		JButton ataque3 = new BotonI(j.getAtaques().get(3).toString());
+		ataque3.setBorderPainted(true);
 		ataque3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -161,6 +167,10 @@ public class PantallaAtaqueEnemigo extends JPanel {
 		vJugador.setBounds(75, 84, 114, 34);
 		panelVida.add(vJugador);
 		
+		JLabel zimgFVida = new JLabel(new ImageIcon(vFImg));
+		zimgFVida.setBounds(0, 0, 199, 214);
+		panelVida.add(zimgFVida);
+		
 		JLabel aSprite = new JLabel(sprite);
 		aSprite.setBounds(168, 185, 639, 300);
 		add(aSprite);
@@ -183,17 +193,6 @@ public class PantallaAtaqueEnemigo extends JPanel {
 		atextoContinuar.setFont(new Font("Verdana", Font.PLAIN, 14));
 		atextoContinuar.setBounds(642, 618, 359, 93);
 		add(atextoContinuar);
-		
-		JLabel pp_Juagador = new JLabel(""+j.getPp()+"");
-		pp_Juagador.setHorizontalAlignment(SwingConstants.CENTER);
-		pp_Juagador.setForeground(Color.BLACK);
-		pp_Juagador.setFont(new Font("Verdana", Font.PLAIN, 36));
-		pp_Juagador.setBounds(75, 139, 124, 34);
-		panelVida.add(pp_Juagador);
-		
-		JLabel zimgFVida = new JLabel(new ImageIcon("./imagenes/vFondo.png"));
-		zimgFVida.setBounds(0, 0, 199, 214);
-		panelVida.add(zimgFVida);
 		
 		JPanel panelInfo = new JPanel();
 		panelInfo.setBounds(60, 201, 331, 269);
@@ -225,7 +224,53 @@ public class PantallaAtaqueEnemigo extends JPanel {
 		panelInfo.add(nombreEnemigo);
 		
 		JLabel imgFondo= new JLabel((new ImageIcon(this.getClass().getResource("f1.gif"))));
+		imgFondo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Random r=new Random();
+				Ataque at=en.getAtaques().get(r.nextInt(en.getAtaques().size()));
+				en.atacarJugador(j,at);
+				men="El enemigo uso "+at.getNombre()+", puntos de vida de "+en.getNombre()+": "+en.getpVida();
+				if(j.getpVida()>0) {
+					try {
+						v.irAPantallaC(v, j, men, en);
+					} catch (IOException | LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}else {
+								
+				}
+			}
+		});
 		imgFondo.setBounds(0, 0, 1023, 768);
-		add(imgFondo);	
+		add(imgFondo);
+		JButton cCurativo = new BotonI("Pocion vida");
+		cCurativo.setBorder(new LineBorder(Color.WHITE));
+		cCurativo.setBorderPainted(true);
+		cCurativo.setFont(new Font("StatusPlz", Font.PLAIN, 14));
+		panelAccion.add(cCurativo);
+		
+		JButton cMasPP = new BotonI("Mas PP");
+		cMasPP.setFont(new Font("StatusPlz", Font.PLAIN, 14));
+		cMasPP.setBorder(new LineBorder(Color.WHITE));
+		cMasPP.setBorderPainted(true);
+		panelAccion.add(cMasPP);
+		
+		JButton cMasPoder = new BotonI("Pocion fuerza");
+		cMasPoder.setFont(new Font("StatusPlz", Font.PLAIN, 18));
+		cMasPoder.setText("Selecciona");
+		panelAccion.add(cMasPoder);
+		
+		JLabel accion = new JLabel("Accion");
+		accion.setBackground(Color.BLACK);
+		accion.setBorder(null);
+		accion.setHorizontalAlignment(SwingConstants.CENTER);
+		accion.setForeground(Color.WHITE);
+		accion.setFont(new Font("StatusPlz", Font.PLAIN, 21));
+		panelAccion.add(accion);
+		
+		
+	
 	}
 }

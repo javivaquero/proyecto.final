@@ -2,12 +2,6 @@ package clases;
 
 public class Objeto {
 	private String nombre;
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 	private short pVAumentados;
 	private short pAAumentados;
 	private short pDAumentados;
@@ -39,6 +33,14 @@ public class Objeto {
 	public Objeto() {
 		// TODO Auto-generated constructor stub
 	}
+	public String getNombre() {
+		return nombre;
+	}
 	
-	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String toString() {
+		return nombre;
+	}
 }
