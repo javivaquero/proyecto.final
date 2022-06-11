@@ -19,6 +19,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
@@ -99,6 +100,7 @@ public class PantallaAtaqueEnemigo extends JPanel {
 				});
 				
 				JButton ataque1 = new BotonI(j.getAtaques().get(1).toString());
+				ataque1.setBorder(new LineBorder(Color.WHITE));
 				ataque1.setBorderPainted(true);
 				ataque1.addMouseListener(new MouseAdapter() {
 					@Override
@@ -125,6 +127,7 @@ public class PantallaAtaqueEnemigo extends JPanel {
 				panelAccion.add(ataque2);
 		
 		JButton ataque3 = new BotonI(j.getAtaques().get(3).toString());
+		ataque3.setBorder(new LineBorder(Color.WHITE));
 		ataque3.setBorderPainted(true);
 		ataque3.addMouseListener(new MouseAdapter() {
 			@Override
@@ -167,10 +170,6 @@ public class PantallaAtaqueEnemigo extends JPanel {
 		vJugador.setBounds(75, 84, 114, 34);
 		panelVida.add(vJugador);
 		
-		JLabel zimgFVida = new JLabel(new ImageIcon(vFImg));
-		zimgFVida.setBounds(0, 0, 199, 214);
-		panelVida.add(zimgFVida);
-		
 		JLabel aSprite = new JLabel(sprite);
 		aSprite.setBounds(168, 185, 639, 300);
 		add(aSprite);
@@ -201,6 +200,7 @@ public class PantallaAtaqueEnemigo extends JPanel {
 		panelInfo.setBorder(new LineBorder(Color.WHITE));
 		panelInfo.setBackground(Color.BLACK);
 		panelInfo.setVisible(true);
+		
 		JLabel saga = new JLabel("Saga:  "+en.getSaga());
 		saga.setHorizontalAlignment(SwingConstants.LEFT);
 		saga.setForeground(Color.WHITE);
@@ -223,28 +223,6 @@ public class PantallaAtaqueEnemigo extends JPanel {
 		nombreEnemigo.setBounds(0, 0, 331, 75);
 		panelInfo.add(nombreEnemigo);
 		
-		JLabel imgFondo= new JLabel((new ImageIcon(this.getClass().getResource("f1.gif"))));
-		imgFondo.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Random r=new Random();
-				Ataque at=en.getAtaques().get(r.nextInt(en.getAtaques().size()));
-				en.atacarJugador(j,at);
-				men="El enemigo uso "+at.getNombre()+", puntos de vida de "+en.getNombre()+": "+en.getpVida();
-				if(j.getpVida()>0) {
-					try {
-						v.irAPantallaC(v, j, men, en);
-					} catch (IOException | LineUnavailableException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}else {
-								
-				}
-			}
-		});
-		imgFondo.setBounds(0, 0, 1023, 768);
-		add(imgFondo);
 		JButton cCurativo = new BotonI("Pocion vida");
 		cCurativo.setBorder(new LineBorder(Color.WHITE));
 		cCurativo.setBorderPainted(true);
@@ -270,7 +248,55 @@ public class PantallaAtaqueEnemigo extends JPanel {
 		accion.setFont(new Font("StatusPlz", Font.PLAIN, 21));
 		panelAccion.add(accion);
 		
+		JList listaConsumibles = new JList(j.getInventario().toArray());
+		listaConsumibles.setFont(new Font("StatusPlz", Font.PLAIN, 14));
+		listaConsumibles.setBorder(new LineBorder(Color.WHITE));
+		listaConsumibles.setForeground(Color.WHITE);
+		listaConsumibles.setBackground(Color.BLACK);
+		listaConsumibles.setBounds(661, 481, 132, 258);
+		add(listaConsumibles);
 		
+		JLabel Objetos = new JLabel("Objetos");
+		Objetos.setBackground(Color.BLACK);
+		Objetos.setHorizontalAlignment(SwingConstants.CENTER);
+		Objetos.setForeground(Color.WHITE);
+		Objetos.setFont(new Font("StatusPlz", Font.PLAIN, 11));
+		Objetos.setBorder(new LineBorder(Color.WHITE));
+		Objetos.setBounds(792, 440, 132, 45);
+		Objetos.setOpaque(true);
+		add(Objetos);
+		
+		JLabel Consumibles = new JLabel("Consumibles");
+		Consumibles.setBackground(Color.BLACK);
+		Consumibles.setHorizontalAlignment(SwingConstants.CENTER);
+		Consumibles.setForeground(Color.WHITE);
+		Consumibles.setFont(new Font("StatusPlz", Font.PLAIN, 11));
+		Consumibles.setBorder(new LineBorder(Color.WHITE));
+		Consumibles.setBounds(661, 440, 132, 45);
+		Consumibles.setOpaque(true);
+		add(Consumibles);
+		JList listaObjetos =  new JList(j.getObjetos().toArray());
+		listaObjetos.setFont(new Font("StatusPlz", Font.PLAIN, 11));
+		listaObjetos.setForeground(Color.WHITE);
+		listaObjetos.setBackground(Color.BLACK);
+		listaObjetos.setBorder(new LineBorder(Color.WHITE));
+		listaObjetos.setBounds(792, 481, 132, 258);
+		add(listaObjetos);
+		
+		JLabel imgFondo = new JLabel((new ImageIcon(this.getClass().getResource("f1.gif"))));
+		imgFondo.setBounds(0, 0, 1023, 768);
+		add(imgFondo);
+		
+		JLabel pp_Juagador = new JLabel(""+j.getPp()+"");
+		pp_Juagador.setHorizontalAlignment(SwingConstants.CENTER);
+		pp_Juagador.setForeground(Color.BLACK);
+		pp_Juagador.setFont(new Font("Verdana", Font.PLAIN, 36));
+		pp_Juagador.setBounds(75, 139, 124, 34);
+		panelVida.add(pp_Juagador);
+		
+		JLabel zimgFVida = new JLabel(new ImageIcon(vFImg));
+		zimgFVida.setBounds(0, 0, 199, 214);
+		panelVida.add(zimgFVida);
 	
 	}
 }

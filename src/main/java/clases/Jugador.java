@@ -30,7 +30,7 @@ public class Jugador extends Personaje{
 		return objetos;
 	}
 	public void setObjetos(ArrayList<Objeto> objetos) {
-		this.objetos = new ArrayList<Objeto>();
+		this.objetos = objetos;
 	}
 	public ArrayList<Consumible> getInventario() {
 		return inventario;
@@ -270,10 +270,10 @@ public Objeto listaObjetosOfensivos(Jugador j) {
 	//3
 	Objeto o4=new Objeto("Evoker",(short)0,(short)40,(short)0);
 	listaObjetos.add(o4);
-	if(j.getPiso()<5) {
-		o=listaObjetos.get(r.nextInt(1));
+	if(j.getPiso()<4) {
+		o=listaObjetos.get(0);
 	}
-	if(j.getPiso()>5&&j.getPiso()>10) {
+	if(j.getPiso()>8&&j.getPiso()>10) {
 		o=listaObjetos.get(2);
 	}
 	if(j.getPiso()>10) {

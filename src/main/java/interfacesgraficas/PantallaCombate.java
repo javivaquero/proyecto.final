@@ -7,6 +7,7 @@ import clases.ConsumibleCurativo;
 import clases.ConsumibleMasPP;
 import clases.Enemigo;
 import clases.Jugador;
+import clases.Objeto;
 import componentesvisuales.BotonI;
 import componentesvisuales.JLComb;
 
@@ -378,7 +379,7 @@ public class PantallaCombate extends JPanel{
 		panelInfo.add(nombreEnemigo);
 		
 		JList listaConsumibles = new JList(j.getInventario().toArray());
-		listaConsumibles.setFont(new Font("StatusPlz", Font.PLAIN, 11));
+		listaConsumibles.setFont(new Font("StatusPlz", Font.PLAIN, 14));
 		listaConsumibles.setBorder(new LineBorder(Color.WHITE));
 		listaConsumibles.setForeground(Color.WHITE);
 		listaConsumibles.setBackground(Color.BLACK);
@@ -386,21 +387,24 @@ public class PantallaCombate extends JPanel{
 		add(listaConsumibles);
 		
 		JLabel Objetos = new JLabel("Objetos");
+		Objetos.setBackground(Color.BLACK);
 		Objetos.setHorizontalAlignment(SwingConstants.CENTER);
 		Objetos.setForeground(Color.WHITE);
 		Objetos.setFont(new Font("StatusPlz", Font.PLAIN, 11));
 		Objetos.setBorder(new LineBorder(Color.WHITE));
 		Objetos.setBounds(792, 440, 132, 45);
+		Objetos.setOpaque(true);
 		add(Objetos);
 		
 		JLabel Consumibles = new JLabel("Consumibles");
+		Consumibles.setBackground(Color.BLACK);
 		Consumibles.setHorizontalAlignment(SwingConstants.CENTER);
 		Consumibles.setForeground(Color.WHITE);
 		Consumibles.setFont(new Font("StatusPlz", Font.PLAIN, 11));
 		Consumibles.setBorder(new LineBorder(Color.WHITE));
 		Consumibles.setBounds(661, 440, 132, 45);
+		Consumibles.setOpaque(true);
 		add(Consumibles);
-		
 		JList listaObjetos =  new JList(j.getObjetos().toArray());
 		listaObjetos.setFont(new Font("StatusPlz", Font.PLAIN, 11));
 		listaObjetos.setForeground(Color.WHITE);
@@ -441,7 +445,7 @@ public class PantallaCombate extends JPanel{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-			}
+				}
 		});
 		ataque0.addMouseListener(new MouseAdapter() {
 			@Override
@@ -470,7 +474,7 @@ public class PantallaCombate extends JPanel{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				
+			
 			}
 		});
 	}
