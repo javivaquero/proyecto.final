@@ -1,45 +1,40 @@
 package interfacesgraficas;
 
 import javax.swing.JPanel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.Font;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-import javax.swing.border.MatteBorder;
-import clases.Personaje;
-import componentesvisuales.BotonI;
+import javax.swing.border.LineBorder;
+
 import clases.Jugador;
+import componentesvisuales.BotonI;
 import excepciones.ContraseñaIncorrectaException;
 import excepciones.NombreInvalidoException;
 import excepciones.UsuarioNoExisteException;
-import utils.ConexionBD;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.awt.CardLayout;
-import javax.swing.Icon;
-import javax.swing.border.LineBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
-public class PantallaLogin extends JPanel{
-	private Ventana ventana;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+
+public class PantallaRegistro extends JPanel {
 	private JTextField campoUsuario;
 	private JPasswordField campoPass;
-	
-	public PantallaLogin(Ventana v) {
+	private Ventana ventana;
+	public PantallaRegistro(Ventana v) {
 		setBackground(Color.BLACK);
 		this.ventana=v;
 		setLayout(null);
 		
-		JButton botonLogin = new BotonI("Login");
+		JButton botonLogin = new BotonI("Registrarse");
 		botonLogin.setBorder(new LineBorder(Color.WHITE));
 		botonLogin.setBorderPainted(true);
 		botonLogin.setFont(new Font("StatusPlz", Font.PLAIN, 18));
@@ -51,8 +46,8 @@ public class PantallaLogin extends JPanel{
 				String nombre=campoUsuario.getText();				
 				String pass=new String(campoPass.getPassword());
 				try {
-					ventana.j = new Jugador(nombre,pass,tope);
-					JOptionPane.showMessageDialog(ventana, "Bienvenido de nuevo "+ventana.j.getNombre(), "Se ha iniciado sesión con éxito",JOptionPane.INFORMATION_MESSAGE);
+					ventana.j = new Jugador(nombre,pass);					
+					JOptionPane.showMessageDialog(ventana, "Bienvenido "+ventana.j.getNombre(), "Registro realizado con éxito.",JOptionPane.INFORMATION_MESSAGE);
 					ventana.irAPantalla(ventana, nombre,tope);
 				} catch (NombreInvalidoException e1) {
 					// TODO Auto-generated catch block
@@ -60,25 +55,17 @@ public class PantallaLogin extends JPanel{
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				} catch (UsuarioNoExisteException e1) {
-					JOptionPane.showMessageDialog(ventana, "El usuario introducido no existe", "ERROR",JOptionPane.ERROR_MESSAGE);
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				} catch (ContraseñaIncorrectaException e1) {
-					// TODO Auto-generated catch block
-					JOptionPane.showMessageDialog(ventana, "La contraseña introducida es incorrecta", "ERROR",JOptionPane.ERROR_MESSAGE);
-					e1.printStackTrace();
-				}							
+				} 							
 			}
 		});
 		botonLogin.setToolTipText("Pincha aqu\u00ED para iniciar sesi\u00F3n");
-		botonLogin.setBounds(552, 329, 186, 74);
+		botonLogin.setBounds(666, 303, 186, 74);
 		this.add(botonLogin);
 		
-		JLabel etiquetaTitulo = new JLabel("Login");
+		JLabel etiquetaTitulo = new JLabel("Registrarse");
 		etiquetaTitulo.setForeground(Color.WHITE);
 		etiquetaTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		etiquetaTitulo.setFont(new Font("StatusPlz", Font.PLAIN, 27));
@@ -86,7 +73,7 @@ public class PantallaLogin extends JPanel{
 		add(etiquetaTitulo);
 		
 		JLabel user = new JLabel("Username");
-		user.setHorizontalAlignment(SwingConstants.CENTER);
+		user.setHorizontalAlignment(SwingConstants.LEFT);
 		user.setForeground(Color.WHITE);
 		user.setFont(new Font("StatusPlz", Font.PLAIN, 27));
 		user.setBounds(552, 138, 158, 53);
@@ -98,26 +85,25 @@ public class PantallaLogin extends JPanel{
 		campoUsuario.setColumns(10);
 		
 		JLabel pass = new JLabel("Pass");
-		pass.setHorizontalAlignment(SwingConstants.CENTER);
+		pass.setHorizontalAlignment(SwingConstants.LEFT);
 		pass.setForeground(Color.WHITE);
 		pass.setFont(new Font("StatusPlz", Font.PLAIN, 27));
-		pass.setBounds(552, 250, 118, 53);
+		pass.setBounds(552, 239, 118, 53);
 		add(pass);
 		
 		campoPass = new JPasswordField();
 		campoPass.setBounds(768, 250, 165, 42);
 		add(campoPass);
 		
-		JButton botonRegsitrarse = new BotonI("Registrarse");
-		botonRegsitrarse.setBorderPainted(true);
-		botonRegsitrarse.setBorder(new LineBorder(Color.WHITE));
-		botonRegsitrarse.setFont(new Font("StatusPlz", Font.PLAIN, 18));
-		botonRegsitrarse.addMouseListener(new MouseAdapter() {
+		JButton botonVolver = new BotonI("Volver a Login");
+		botonVolver.setBorder(new LineBorder(Color.WHITE));
+		botonVolver.setFont(new Font("StatusPlz", Font.PLAIN, 18));
+		botonVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
 				try {
-					v.irAPantallaR(v);
+					v.irAPantalla(v);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -125,8 +111,8 @@ public class PantallaLogin extends JPanel{
 				
 			}
 		});
-		botonRegsitrarse.setBounds(775, 329, 186, 75);
-		add(botonRegsitrarse);
+		botonVolver.setBounds(552, 390, 139, 53);
+		add(botonVolver);
 		
 		JPanel panelFondoLogin = new JPanel();
 		panelFondoLogin.setBackground(Color.BLACK);

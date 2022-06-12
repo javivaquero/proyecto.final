@@ -8,7 +8,7 @@ public class Ataque extends ElementoConNombre {
 
 	 private short potencia;
 	 private byte precision;
-	 private byte costePP;
+	 private int costePP;
 	 private Tipo tipo;
 	public Ataque (){
 		
@@ -31,17 +31,17 @@ public class Ataque extends ElementoConNombre {
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
-	public Ataque(String nombre, short potencia, byte precision, Tipo tipo, byte costePP) {
+	public Ataque(String nombre, short potencia, byte precision, Tipo tipo, int costePP) {
 		super(nombre);
 		this.potencia = potencia;
 		this.precision = precision;
 		this.tipo = tipo;
 		this.costePP=costePP;
 	}
-	public byte getCostePP() {
+	public int getCostePP() {
 		return costePP;
 	}
-	public void setCostePP(byte costePP) {
+	public void setCostePP(int costePP) {
 		this.costePP = costePP;
 	}
 	@Override

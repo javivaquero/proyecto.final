@@ -312,7 +312,7 @@ public class PantallaCombate extends JPanel{
 				for (byte i=0;i<c.size();i++) {
 					if(c.get(i).getNombre().equals("Vino Don Simon")||c.get(i).getNombre().equals("Humunculo")) {
 						ConsumibleMasPP cc=(ConsumibleMasPP) c.get(i);
-						j.setPp((byte) ((short) (j.getpVida()+cc.getPpAumentados())));
+						j.setPp((int) ((short) (j.getpVida()+cc.getPpAumentados())));
 						c.remove(i);
 						encontrado=true;
 						break;

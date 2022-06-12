@@ -123,8 +123,80 @@ public class Enemigo extends Personaje {
 		e4.setAtaques(ataquese4);
 		en.add(e4);
 		
+		//4
 		
+		Enemigo e5=new Enemigo("Nemesis", (short)400, (short)6, (short)2, this.getAtaques(),(byte) 90, Tipo.FISICO,"Resident Evil 3","1999");
 		
+		ArrayList<Ataque>ataquese5=new ArrayList<Ataque>();
+		ataquese5.add(this.listaAtaques().get(9));
+		ataquese5.add(this.listaAtaques().get(10));
+		e4.setAtaques(ataquese5);
+		en.add(e5);
+		
+		//5
+		
+		Enemigo e6=new Enemigo("Slime", (short)460, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Dragon Quest 3","1986");
+		
+		ArrayList<Ataque>ataquese6=new ArrayList<Ataque>();
+		ataquese6.add(this.listaAtaques().get(9));
+		ataquese6.add(this.listaAtaques().get(10));
+		e4.setAtaques(ataquese6);
+		en.add(e6);
+		//6
+		
+		Enemigo e7=new Enemigo("Mother Brain", (short)500, (short)7, (short)2, this.getAtaques(),(byte) 90, Tipo.ELECTRICO,"Metroid","1986");
+		
+		ArrayList<Ataque>ataquese7=new ArrayList<Ataque>();
+		ataquese7.add(this.listaAtaques().get(9));
+		ataquese7.add(this.listaAtaques().get(10));
+		e4.setAtaques(ataquese7);
+		en.add(e7);
+		//7
+		
+		Enemigo e8=new Enemigo("Masked Man", (short)300, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Mother 3","2006");
+		
+		ArrayList<Ataque>ataquese8=new ArrayList<Ataque>();
+		ataquese8.add(this.listaAtaques().get(9));
+		ataquese8.add(this.listaAtaques().get(10));
+		e4.setAtaques(ataquese8);
+		en.add(e8);
+		//8
+
+		Enemigo e9=new Enemigo("Masked Man", (short)300, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Mother 3","2006");
+		
+		ArrayList<Ataque>ataquese9=new ArrayList<Ataque>();
+		ataquese9.add(this.listaAtaques().get(9));
+		ataquese9.add(this.listaAtaques().get(10));
+		e4.setAtaques(ataquese9);
+		en.add(e9);
+		
+		//9
+		
+		Enemigo e10=new Enemigo("Masked Man", (short)300, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Mother 3","2006");
+		ArrayList<Ataque>ataquese10=new ArrayList<Ataque>();
+		ataquese10.add(this.listaAtaques().get(9));
+		ataquese10.add(this.listaAtaques().get(10));
+		e4.setAtaques(ataquese10);
+		en.add(e10);
+		
+		//10
+		
+		Enemigo e11=new Enemigo("Masked Man", (short)300, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Mother 3","2006");
+		
+		ArrayList<Ataque>ataquese11=new ArrayList<Ataque>();
+		ataquese11.add(this.listaAtaques().get(9));
+		ataquese11.add(this.listaAtaques().get(10));
+		e4.setAtaques(ataquese11);
+		en.add(e11);
+		//11
+		
+		Enemigo e12=new Enemigo("Masked Man", (short)300, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Mother 3","2006");
+		
+		ArrayList<Ataque>ataquese12=new ArrayList<Ataque>();
+		ataquese12.add(this.listaAtaques().get(9));
+		ataquese12.add(this.listaAtaques().get(10));
+		e4.setAtaques(ataquese12);
+		en.add(e12);
 		
 		return en.get(e);
 	}

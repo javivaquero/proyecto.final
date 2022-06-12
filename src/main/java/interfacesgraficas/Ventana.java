@@ -43,12 +43,20 @@ public class Ventana extends JFrame {
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual=null;			
 		this.pantallaActual=new PantallaLogin(this);
-
+		this.setContentPane(this.pantallaActual);
+		this.setVisible(true);
 			}
-	public void irAPantalla(Ventana v, String nombre) throws IOException {
+	public void irAPantallaR(Ventana v) throws IOException {
+		this.pantallaActual.setVisible(false);
+		this.pantallaActual=null;			
+		this.pantallaActual=new PantallaRegistro(this);
+		this.setContentPane(this.pantallaActual);
+		this.setVisible(true);
+			}
+	public void irAPantalla(Ventana v, String nombre,byte tope) throws IOException {
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual=null;					
-		this.pantallaActual=new PantallaSeleccionClase(this,nombre);				
+		this.pantallaActual=new PantallaSeleccionClase(this,nombre,tope);				
 		this.pantallaActual.setVisible(true);
 		this.setContentPane(pantallaActual);
 	}

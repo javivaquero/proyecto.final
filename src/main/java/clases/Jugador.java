@@ -11,7 +11,9 @@ import java.util.Random;
 
 import enums.Clase;
 import enums.Tipo;
+import excepciones.ContraseñaIncorrectaException;
 import excepciones.NombreInvalidoException;
+import excepciones.UsuarioNoExisteException;
 import interfacesgraficas.Ventana;
 
 import utils.ConexionBD;
@@ -23,9 +25,22 @@ public class Jugador extends Personaje{
 	private byte piso;
 	private Clase clase;
 	private Tipo tipo;
-	private byte pp;
+	private int pp;
+	private byte tope;
+	private String pass;
 	
-	
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public byte getTope() {
+		return tope;
+	}
+	public void setTope(byte tope) {
+		this.tope = tope;
+	}
 	public ArrayList<Objeto> getObjetos() {
 		return objetos;
 	}
@@ -42,13 +57,13 @@ public class Jugador extends Personaje{
 	
 	public Jugador(String nombre, short pVida, short pAtaque, short pDefensa, ArrayList<Ataque> ataques,
 			byte pVelocidad, ArrayList<Objeto> objetos, ArrayList<Consumible> inventario,byte piso,
-			Clase clase,Tipo tipo,byte pp) {
+			Clase clase,Tipo tipo,int pp,byte tope) {
 		super(nombre, pVida, pAtaque, pDefensa, ataques, pVelocidad);
 		ArrayList<Ataque> movimientos=new ArrayList<Ataque>();
 		switch(clase) {
 		case MAGO:
 			//0	
-			Ataque golpe=new Ataque("Golpe",(short)4,(byte)100,Tipo.FISICO,(byte)0);
+			Ataque golpe=new Ataque("Golpe",(short)4,(byte)100,Tipo.FISICO,(byte) 0);
 			movimientos.add(golpe);
 			//1
 			Ataque quemar=new Ataque("Quemar",(short)7,(byte)75,Tipo.FUEGO,(byte)5);
@@ -114,6 +129,7 @@ public class Jugador extends Personaje{
 		this.tipo=tipo;
 		this.clase=clase;
 		this.pp=pp;
+		this.tope=tope;
 	}
 	
 	public Tipo getTipo() {
@@ -126,61 +142,61 @@ public class Jugador extends Personaje{
 		
 	}
 	
+	//INICIAR SESIÓN
 	
-	public Jugador(String nombre) throws NombreInvalidoException {
+	public Jugador(String nombre,String pass,byte tope) throws NombreInvalidoException, UsuarioNoExisteException, SQLException, ContraseñaIncorrectaException {		 
+		Statement smt=ConexionBD.conectar();
+		ResultSet cursor=smt.executeQuery("select * from usuario where usuario='"+
+		nombre+"'");
+		if(cursor.next()) {
+			this.pass=cursor.getString("pass");
+			if(!this.pass.equals(pass)) {
+				ConexionBD.desconectar();
+				throw new ContraseñaIncorrectaException("La contraseña no es correcta");
+			}		
+			this.nombre=cursor.getString("usuario");			
+			this.tope=cursor.getByte("tope");
+		}else {
+			ConexionBD.desconectar();
+			throw new UsuarioNoExisteException("No existe ese usuario en la BD");
+		}
+		ConexionBD.desconectar();
+	}
+	
+	//REGISTRARSE
+	
+	public Jugador(String nombre,String pass) throws NombreInvalidoException, SQLException {
 		if(nombre.length()>11) {
-			throw new NombreInvalidoException("El nombre introducido es demasiado largo");
+			throw new NombreInvalidoException("El nombre no es válido");
 		}
 		Statement smt=ConexionBD.conectar();
-		try {
-			ResultSet cursor=smt.executeQuery("select * from usuario where usuario='"+
-					nombre+"'");
-			if(cursor.next()) {
-				if(cursor.getString("usuario").equals(nombre)) {
-					ConexionBD.desconectar();
-					this.setNombre(nombre);
-					
-										
-				}else {
-					if(smt.executeUpdate("insert into usuario values('"+nombre+"')")>0) {
-						ConexionBD.desconectar();
-						this.setNombre(nombre);
-						
-					}else {
-						throw new SQLException("No se ha podido insertar");
-					}
-				
-				}
-			}	else {
-				if(smt.executeUpdate("insert into usuario values('"+nombre+"')")>0) {
-					ConexionBD.desconectar();
-					this.setNombre(nombre);
-					
-				}else {
-					throw new SQLException("No se ha podido insertar");
-				}
-			
-			}
-		
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-
-	
-
-}
-	
-	}	
+		if(smt.executeUpdate("insert into usuario values('"
+		+nombre+"','"+pass+"','"+0+"')")>0) {
+			//Solo si todo ha ido bien insertando, se modifican las variables internas
+			this.nombre = nombre;
+			this.pass = pass;
+			this.tope = 0;
+		}else {
+			//Si no se ha podido insertar, lanzo un error: Algo ha ido mal.
+			ConexionBD.desconectar();
+			throw new SQLException("No se ha podido insertar");
+		}
+		ConexionBD.desconectar();
+	}
 	
 	public void atacarEnemigo(Enemigo e,Ataque a,byte at) throws FileNotFoundException {
 		Random r=new Random();
-	
+		Ataque atJ;
+		if(this.getPp()==0) {
+			atJ=this.getAtaques().get(0);
+		}else {
+			atJ=this.getAtaques().get(at);
+		}
 		
-		Ataque atJ=this.getAtaques().get(at);
 		byte acierto=(byte) r.nextInt(100);
 		if(acierto<atJ.getPrecision()) {
 		short vEActual=e.getpVida();
-		byte pp=this.getPp();
+		int pp=this.getPp();
 		switch(atJ.getTipo()) {
 		default:
 			
@@ -212,13 +228,18 @@ public class Jugador extends Personaje{
 		}
 		e.setpVida(vEActual);
 		pp-=atJ.getCostePP();
-		this.setPp(pp);
+		if(this.getPp()<=0) {
+			this.setPp((int) 0);
+		}else {
+			this.setPp(pp);
+		}
+		
 		}
 	}
-	public byte getPp() {
+	public int getPp() {
 		return pp;
 	}
-	public void setPp(byte pp) {
+	public void setPp(int pp) {
 		this.pp = pp;
 	}
 	public byte getPiso() {
