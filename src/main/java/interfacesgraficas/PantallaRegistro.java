@@ -42,13 +42,13 @@ public class PantallaRegistro extends JPanel {
 		botonLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				byte tope=0;
+				byte tope=4;
 				String nombre=campoUsuario.getText();				
 				String pass=new String(campoPass.getPassword());
 				try {
-					ventana.j = new Jugador(nombre,pass);					
+					ventana.j = new Jugador(nombre,pass,"");					
 					JOptionPane.showMessageDialog(ventana, "Bienvenido "+ventana.j.getNombre(), "Registro realizado con éxito.",JOptionPane.INFORMATION_MESSAGE);
-					ventana.irAPantalla(ventana, nombre,tope);
+					ventana.irAPantalla(ventana, nombre);
 				} catch (NombreInvalidoException e1) {
 					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(ventana, "El usuario introducido es demasiado largo", "ERROR",JOptionPane.ERROR_MESSAGE);

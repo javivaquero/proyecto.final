@@ -68,7 +68,13 @@ public class PantallaAtaqueEnemigo extends JPanel {
 						e1.printStackTrace();
 					}
 				}else {
-									
+				try {
+					v.clip.close();
+					v.irAPantallaD(v);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}		
 				}
 			}
 		});
@@ -94,7 +100,13 @@ public class PantallaAtaqueEnemigo extends JPanel {
 								e1.printStackTrace();
 							}
 						}else {
-										
+						try {
+							v.clip.close();
+							v.irAPantallaD(v);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}		
 						}
 					}
 				});
@@ -104,7 +116,7 @@ public class PantallaAtaqueEnemigo extends JPanel {
 				ataque1.setBorderPainted(true);
 				ataque1.addMouseListener(new MouseAdapter() {
 					@Override
-					public void mouseReleased(MouseEvent e) {
+					public void mouseClicked(MouseEvent e) {
 						Random r=new Random();
 						Ataque at=en.getAtaques().get(r.nextInt(en.getAtaques().size()));
 						en.atacarJugador(j,at);
@@ -117,7 +129,13 @@ public class PantallaAtaqueEnemigo extends JPanel {
 								e1.printStackTrace();
 							}
 						}else {
-											
+						try {
+							v.clip.close();
+							v.irAPantallaD(v);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}		
 						}
 					}
 				});
@@ -144,7 +162,13 @@ public class PantallaAtaqueEnemigo extends JPanel {
 						e1.printStackTrace();
 					}
 				}else {
-								
+				try {
+					v.clip.close();
+					v.irAPantallaD(v);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}		
 				}
 			}
 		});
@@ -224,12 +248,59 @@ public class PantallaAtaqueEnemigo extends JPanel {
 		panelInfo.add(nombreEnemigo);
 		
 		JButton cCurativo = new BotonI("Pocion vida");
+		cCurativo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Random r=new Random();
+				Ataque at=en.getAtaques().get(r.nextInt(en.getAtaques().size()));
+				en.atacarJugador(j,at);
+				men="El enemigo uso "+at.getNombre()+", puntos de vida de "+en.getNombre()+": "+en.getpVida();
+				if(j.getpVida()>0) {
+					try {
+						v.irAPantallaC(v, j, men, en);
+					} catch (IOException | LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}else {
+				try {
+					v.irAPantallaD(v);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}		
+				}
+			}
+		});
 		cCurativo.setBorder(new LineBorder(Color.WHITE));
 		cCurativo.setBorderPainted(true);
 		cCurativo.setFont(new Font("StatusPlz", Font.PLAIN, 14));
 		panelAccion.add(cCurativo);
 		
 		JButton cMasPP = new BotonI("Mas PP");
+		cMasPP.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				Random r=new Random();
+				Ataque at=en.getAtaques().get(r.nextInt(en.getAtaques().size()));
+				en.atacarJugador(j,at);
+				men="El enemigo uso "+at.getNombre()+", puntos de vida de "+en.getNombre()+": "+en.getpVida();
+				if(j.getpVida()>0) {
+					try {
+						v.irAPantallaC(v, j, men, en);
+					} catch (IOException | LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}else {
+				try {
+					v.irAPantallaD(v);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}		
+				}
+			}
+		});
 		cMasPP.setFont(new Font("StatusPlz", Font.PLAIN, 14));
 		cMasPP.setBorder(new LineBorder(Color.WHITE));
 		cMasPP.setBorderPainted(true);
@@ -284,6 +355,25 @@ public class PantallaAtaqueEnemigo extends JPanel {
 		add(listaObjetos);
 		
 		JLabel imgFondo = new JLabel((new ImageIcon(this.getClass().getResource("f1.gif"))));
+		imgFondo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				Random r=new Random();
+				Ataque at=en.getAtaques().get(r.nextInt(en.getAtaques().size()));
+				en.atacarJugador(j,at);
+				men="El enemigo uso "+at.getNombre()+", puntos de vida de "+en.getNombre()+": "+en.getpVida();
+				if(j.getpVida()>0) {
+					try {
+						v.irAPantallaC(v, j, men, en);
+					} catch (IOException | LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}else {
+									
+				}
+			}
+		});
 		imgFondo.setBounds(0, 0, 1023, 768);
 		add(imgFondo);
 		

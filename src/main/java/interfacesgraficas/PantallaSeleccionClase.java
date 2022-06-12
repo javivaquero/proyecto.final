@@ -33,7 +33,7 @@ public class PantallaSeleccionClase extends JPanel{
 
 	private Ventana ventana;
 	private Jugador j;
-	public PantallaSeleccionClase(Ventana ventana, String user,byte tope) throws IOException{
+	public PantallaSeleccionClase(Ventana ventana, String user) throws IOException{
 		super();
 		this.ventana = ventana;
 		//IMAGENES
@@ -64,7 +64,7 @@ public class PantallaSeleccionClase extends JPanel{
 				ArrayList<Ataque>a=new ArrayList<Ataque>();
 				ArrayList<Objeto>o=new ArrayList<Objeto>();
 				ArrayList<Consumible>cs=new ArrayList<Consumible>();				
-				j=new Jugador(user,(short)65,(short)4,(short)2,a,(byte)60,o,cs,(byte)1,Clase.ARQUERO,Tipo.FUEGO,(int)100,tope);
+				j=new Jugador(user,(short)140,(short)14,(short)1,a,(byte)60,o,cs,(byte)1,Clase.ARQUERO,Tipo.FUEGO,(int)100,ventana.j.getTope());
 				try {
 					ventana.irAPantallaC(ventana, j,"",null);
 				} catch (IOException e1) {
@@ -86,7 +86,7 @@ public class PantallaSeleccionClase extends JPanel{
 			ArrayList<Ataque>a=new ArrayList<Ataque>();
 			ArrayList<Objeto>o=new ArrayList<Objeto>();
 			ArrayList<Consumible>cs=new ArrayList<Consumible>();
-			j=new Jugador(user,(short)160,(short)5,(short)1,a,(byte)40,o,cs,(byte)1,Clase.MAGO,Tipo.ELECTRICO,(int)100,tope);
+			j=new Jugador(user,(short)160,(short)10,(short)1,a,(byte)40,o,cs,(byte)1,Clase.MAGO,Tipo.ELECTRICO,(int)100,ventana.j.getTope());
 			try {
 				ventana.irAPantallaC(ventana, j,"",null);
 			} catch (IOException e1) {
@@ -108,7 +108,7 @@ public class PantallaSeleccionClase extends JPanel{
 				ArrayList<Ataque>a=new ArrayList<Ataque>();
 				ArrayList<Objeto>o=new ArrayList<Objeto>();
 				ArrayList<Consumible>cs=new ArrayList<Consumible>();
-				j=new Jugador(user,(short)100,(short)2,(short)3,a,(byte)30,o,cs,(byte)1,Clase.TANQUE,Tipo.FISICO,(int)100,tope);
+				j=new Jugador(user,(short)220,(short)10,(short)2,a,(byte)30,o,cs,(byte)1,Clase.TANQUE,Tipo.FISICO,(int)100,ventana.j.getTope());
 				try {
 					ventana.irAPantallaC(ventana, j,"",null);
 				} catch (IOException e1) {
@@ -132,7 +132,7 @@ public class PantallaSeleccionClase extends JPanel{
 				ArrayList<Ataque>a=new ArrayList<Ataque>();
 				ArrayList<Objeto>o=new ArrayList<Objeto>();
 				ArrayList<Consumible>cs=new ArrayList<Consumible>();				
-				j=new Jugador(user,(short)40,(short)7,(short)1,a,(byte)80,o,cs,(byte)1,Clase.ASESINO,Tipo.HIELO,(int)100,tope);
+				j=new Jugador(user,(short)110,(short)19,(short)1,a,(byte)80,o,cs,(byte)1,Clase.ASESINO,Tipo.HIELO,(int)100,ventana.j.getTope());
 				try {
 					ventana.irAPantallaC(ventana, j,"",null);
 				} catch (IOException e1) {

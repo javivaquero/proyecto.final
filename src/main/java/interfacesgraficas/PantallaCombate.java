@@ -34,6 +34,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JLabel;
@@ -137,11 +138,135 @@ public class PantallaCombate extends JPanel{
 				}
 				break;
 				
-				
+			case 5:
+				en=en.listaEnemigos((byte) 4);
+				try {					
+					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/5.wav"));				
+					v.clip=AudioSystem.getClip();				
+					v.clip.open(audio);
+					v.clip.start();	
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
+				} catch (UnsupportedAudioFileException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();	
+				}
+				break;
+			case 6:
+				en=en.listaEnemigos((byte) 5);
+				try {					
+					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/6.wav"));				
+					v.clip=AudioSystem.getClip();				
+					v.clip.open(audio);
+					v.clip.start();	
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
+				} catch (UnsupportedAudioFileException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();	
+				}
+				break;
+			case 7:
+				en=en.listaEnemigos((byte) 6);
+				try {					
+					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/7.wav"));				
+					v.clip=AudioSystem.getClip();				
+					v.clip.open(audio);
+					v.clip.start();	
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
+				} catch (UnsupportedAudioFileException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();	
+				}
+				break;
+			case 8:
+				en=en.listaEnemigos((byte) 7);
+				try {					
+					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/8.wav"));				
+					v.clip=AudioSystem.getClip();				
+					v.clip.open(audio);
+					v.clip.start();	
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
+				} catch (UnsupportedAudioFileException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();	
+				}
+				break;
+			case 9:
+				en=en.listaEnemigos((byte) 8);
+				try {					
+					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/9.wav"));				
+					v.clip=AudioSystem.getClip();				
+					v.clip.open(audio);
+					v.clip.start();	
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
+				} catch (UnsupportedAudioFileException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();	
+				}
+				break;
+			case 10:
+				en=en.listaEnemigos((byte) 9);
+				try {					
+					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/10.wav"));				
+					v.clip=AudioSystem.getClip();				
+					v.clip.open(audio);
+					v.clip.start();	
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
+				} catch (UnsupportedAudioFileException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();	
+				}
+				break;
+			case 11:
+				en=en.listaEnemigos((byte) 10);
+				try {					
+					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/1.wav"));				
+					v.clip=AudioSystem.getClip();				
+					v.clip.open(audio);
+					v.clip.start();	
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
+				} catch (UnsupportedAudioFileException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();	
+				}
+				break;
+			case 12:
+				en=en.listaEnemigos((byte) 11);
+				try {					
+					AudioInputStream audio=AudioSystem.getAudioInputStream(new File("./ost/2.wav"));				
+					v.clip=AudioSystem.getClip();				
+					v.clip.open(audio);
+					v.clip.start();	
+					v.clip.loop(Clip.LOOP_CONTINUOUSLY);
+				} catch (UnsupportedAudioFileException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();	
+				}
+				break;			
 			}
-			
-			
-			
 			
 			this.ene=en;
 			
@@ -170,6 +295,30 @@ public class PantallaCombate extends JPanel{
 		//ENEMIGO 4
 		case 4:
 			sprite=new ImageIcon("./imagenes/e4.png");
+			break;
+		case 5:
+			sprite=new ImageIcon("./imagenes/e5.png");
+			break;
+		case 6:
+			sprite=new ImageIcon("./imagenes/e6.png");
+			break;
+		case 7:
+			sprite=new ImageIcon("./imagenes/e7.png");
+			break;
+		case 8:
+			sprite=new ImageIcon("./imagenes/e8.png");
+			break;
+		case 9:
+			sprite=new ImageIcon("./imagenes/e9.png");
+			break;
+		case 10:
+			sprite=new ImageIcon("./imagenes/e10.png");
+			break;
+		case 11:
+			sprite=new ImageIcon("./imagenes/e11.png");
+			break;
+		case 12:
+			sprite=new ImageIcon("./imagenes/e12.png");
 			break;
 		}
 		JPanel panelAccion = new JPanel();
@@ -202,10 +351,28 @@ public class PantallaCombate extends JPanel{
 						if(ene.getpVida()>0) {
 							men=j.getNombre()+" uso: "+a.getNombre()+".";
 							v.irAPantallaAE(v, j, men, ene,sprite);
-						}else {
+						}else {						
 							v.clip.close();
-							j.setPiso((byte) (j.getPiso()+1));					
-							v.irAPantallaO(v,j);
+							j.setPiso((byte) (j.getPiso()+1));
+							if(j.getPiso()>j.getTope()) {
+								if(j.getPiso()==13) {
+									v.irAPantallaV(v);
+								}
+								j.setPiso((byte)1);
+								
+								if(j.getTope()==8) {
+									j.setTope((byte)12);	
+									v.irAPantallaV(v);
+								}	
+								if(j.getTope()==4) {
+										j.setTope((byte)8);	
+										v.irAPantallaV(v);
+									}
+
+							}else {
+								v.irAPantallaO(v,j);
+							}
+							
 						}
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
@@ -214,6 +381,9 @@ public class PantallaCombate extends JPanel{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -237,10 +407,27 @@ public class PantallaCombate extends JPanel{
 						if(ene.getpVida()>0) {
 							men=j.getNombre()+" uso: "+a.getNombre()+".";
 							v.irAPantallaAE(v, j, men, ene,sprite);
-						}else {
+						}else {						
 							v.clip.close();
 							j.setPiso((byte) (j.getPiso()+1));
-							v.irAPantallaO(v,j);
+							if(j.getPiso()>j.getTope()) {
+								if(j.getPiso()==13) {
+									v.irAPantallaV(v);
+								}
+								j.setPiso((byte)1);
+								
+								if(j.getTope()==8) {
+									j.setTope((byte)12);	
+									v.irAPantallaV(v);
+								}	
+								if(j.getTope()==4) {
+										j.setTope((byte)8);	
+										v.irAPantallaV(v);
+									}
+
+							}else {
+								v.irAPantallaO(v,j);
+							}
 							
 						}
 					} catch (FileNotFoundException e1) {
@@ -250,6 +437,9 @@ public class PantallaCombate extends JPanel{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -312,7 +502,7 @@ public class PantallaCombate extends JPanel{
 				for (byte i=0;i<c.size();i++) {
 					if(c.get(i).getNombre().equals("Vino Don Simon")||c.get(i).getNombre().equals("Humunculo")) {
 						ConsumibleMasPP cc=(ConsumibleMasPP) c.get(i);
-						j.setPp((int) ((short) (j.getpVida()+cc.getPpAumentados())));
+						j.setPp((int) ((short) (j.getPp()+cc.getPpAumentados())));
 						c.remove(i);
 						encontrado=true;
 						break;
@@ -483,10 +673,28 @@ public class PantallaCombate extends JPanel{
 							men=j.getNombre()+" uso: "+a.getNombre()+".";
 							v.irAPantallaAE(v, j, men, ene,sprite);
 							
-						}else {
+						}else {						
 							v.clip.close();
 							j.setPiso((byte) (j.getPiso()+1));
-							v.irAPantallaO(v,j);
+							if(j.getPiso()>j.getTope()) {
+								if(j.getPiso()==13) {
+									v.irAPantallaV(v);
+								}
+								j.setPiso((byte)1);
+								
+								if(j.getTope()==8) {
+									j.setTope((byte)12);	
+									v.irAPantallaV(v);
+								}	
+								if(j.getTope()==4) {
+										j.setTope((byte)8);	
+										v.irAPantallaV(v);
+									}
+
+							}else {
+								v.irAPantallaO(v,j);
+							}
+							
 						}
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
@@ -495,6 +703,9 @@ public class PantallaCombate extends JPanel{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -515,7 +726,25 @@ public class PantallaCombate extends JPanel{
 						}else {						
 							v.clip.close();
 							j.setPiso((byte) (j.getPiso()+1));
-							v.irAPantallaO(v,j);
+							if(j.getPiso()>j.getTope()) {
+								if(j.getPiso()==13) {
+									v.irAPantallaV(v);
+								}
+								j.setPiso((byte)1);
+								
+								if(j.getTope()==8) {
+									j.setTope((byte)12);	
+									v.irAPantallaV(v);
+								}	
+								if(j.getTope()==4) {
+										j.setTope((byte)8);	
+										v.irAPantallaV(v);
+									}
+
+							}else {
+								v.irAPantallaO(v,j);
+							}
+							
 						}
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
@@ -524,6 +753,9 @@ public class PantallaCombate extends JPanel{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}

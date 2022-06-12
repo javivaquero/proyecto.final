@@ -66,12 +66,9 @@ public class PantallaSeleccionObjeto extends JPanel	{
 		botonMasVida.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ArrayList<Objeto>arrObjetos=j.getObjetos();
-				ArrayList<Consumible>arrCons=j.getInventario();
+				ArrayList<Objeto>arrObjetos=j.getObjetos();	
 					
-					if(j.getPiso()%2==0) {
-					j.getInventario().add(j.listaConsumibles(j));
-					}
+					j.getInventario().add(j.listaConsumibles(j));					
 				
 				j.getObjetos().add(j.listaObjetosCurativos(j));
 				j.setpVida((short) (j.getpVida()+arrObjetos.get(arrObjetos.size()-1).getpVAumentados()));
@@ -98,9 +95,12 @@ public class PantallaSeleccionObjeto extends JPanel	{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ArrayList<Objeto>arrObjetos=j.getObjetos();
-				arrObjetos.add(j.listaObjetosDefensivos(j));
 				
-				j.setObjetos(arrObjetos);
+				
+					j.getInventario().add(j.listaConsumibles(j));
+					
+				
+				j.getObjetos().add(j.listaObjetosDefensivos(j));
 				j.setpVida((short) (j.getpVida()+arrObjetos.get(arrObjetos.size()-1).getpVAumentados()));
 				j.setpDefensa((short) (j.getpDefensa()+arrObjetos.get(arrObjetos.size()-1).getpDAumentados()));
 				j.setpAtaque((short) (j.getpAtaque()+arrObjetos.get(arrObjetos.size()-1).getpAAumentados()));
@@ -123,9 +123,10 @@ public class PantallaSeleccionObjeto extends JPanel	{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ArrayList<Objeto>arrObjetos=j.getObjetos();
-				arrObjetos.add(j.listaObjetosOfensivos(j));
 				
-				j.setObjetos(arrObjetos);
+					j.getInventario().add(j.listaConsumibles(j));
+					
+				j.getObjetos().add(j.listaObjetosOfensivos(j));
 				j.setpVida((short) (j.getpVida()+arrObjetos.get(arrObjetos.size()-1).getpVAumentados()));
 				j.setpDefensa((short) (j.getpDefensa()+arrObjetos.get(arrObjetos.size()-1).getpDAumentados()));
 				j.setpAtaque((short) (j.getpAtaque()+arrObjetos.get(arrObjetos.size()-1).getpAAumentados()));
@@ -146,20 +147,22 @@ public class PantallaSeleccionObjeto extends JPanel	{
 		panelM.setLayout(null);
 		panelM.setBorder(new LineBorder(Color.WHITE));
 		panelM.setBackground(Color.BLACK);
-		panelM.setBounds(284, 11, 714, 67);
+		panelM.setBounds(27, 11, 971, 67);
 		add(panelM);
 		JLabel texto = new JLabel();
-		if(j.getPiso()%2==0) {
+		
 			texto.setText("Selecciona tu Nuevo Objeto, has recibido un consumible aleatorio.");
-		}else {
-			texto.setText("Selecciona tu Nuevo Objeto.");
-		}
+		
 		
 		texto.setForeground(Color.WHITE);
 		texto.setHorizontalAlignment(SwingConstants.CENTER);
 		texto.setFont(new Font("StatusPlz", Font.PLAIN, 26));
-		texto.setBounds(0, 0, 714, 67);
+		texto.setBounds(0, 0, 971, 67);
 		panelM.add(texto);
+		
+		JLabel fondo = new JLabel(new ImageIcon("./imagenes/fondoob.png"));
+		fondo.setBounds(0, 0, 1024, 768);
+		add(fondo);
 		
 		
 		

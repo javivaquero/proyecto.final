@@ -13,7 +13,11 @@ public class ConsumibleCurativo extends Consumible {
 	}
 
 	
-
+	/**
+	 * 
+	 * @param nombre: Nombre del consumible, extiende de ElementoConNombre.
+	 * @param pVRestaurados
+	 */
 	public ConsumibleCurativo(String nombre, short pVRestaurados) {
 		super(nombre);
 		this.pVRestaurados = pVRestaurados;

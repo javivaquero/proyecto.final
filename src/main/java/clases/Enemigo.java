@@ -12,11 +12,16 @@ import javax.swing.ImageIcon;
 import clases.Ataque;
 import enums.Tipo;
 
+
+
 public class Enemigo extends Personaje {
 
+	
 	private Tipo tipo;
 	private String saga;
 	private String fLanzamiento;
+	
+	
 	public Tipo getTipo() {
 		return tipo;
 	}
@@ -37,7 +42,6 @@ public class Enemigo extends Personaje {
 		
 	}
 	public void atacarJugador(Jugador j,Ataque a) {
-		//los e son this
 		Random r=new Random();
 		Ataque atEn=a;
 		byte acierto=(byte) r.nextInt(100);
@@ -84,7 +88,7 @@ public class Enemigo extends Personaje {
 		
 		//0
 		
-		Enemigo e1=new Enemigo("Starman", (short)50, (short)1, (short)2, this.getAtaques(),(byte) 55, Tipo.FISICO,"Mother 2/EarthBound","1994");
+		Enemigo e1=new Enemigo("Starman", (short)100, (short)2, (short)2, this.getAtaques(),(byte) 55, Tipo.FISICO,"Mother 2/EarthBound","1994");
 		ArrayList<Ataque>ataquese1=new ArrayList<Ataque>();
 		ataquese1.add(this.listaAtaques().get(0));
 		ataquese1.add(this.listaAtaques().get(1));
@@ -125,77 +129,76 @@ public class Enemigo extends Personaje {
 		
 		//4
 		
-		Enemigo e5=new Enemigo("Nemesis", (short)400, (short)6, (short)2, this.getAtaques(),(byte) 90, Tipo.FISICO,"Resident Evil 3","1999");
+		Enemigo e5=new Enemigo("Nemesis", (short)300, (short)6, (short)2, this.getAtaques(),(byte) 90, Tipo.FISICO,"Resident Evil 3","1999");
 		
 		ArrayList<Ataque>ataquese5=new ArrayList<Ataque>();
-		ataquese5.add(this.listaAtaques().get(9));
-		ataquese5.add(this.listaAtaques().get(10));
-		e4.setAtaques(ataquese5);
+		ataquese5.add(this.listaAtaques().get(11));
+		ataquese5.add(this.listaAtaques().get(12));
+		e5.setAtaques(ataquese5);
 		en.add(e5);
 		
 		//5
 		
-		Enemigo e6=new Enemigo("Slime", (short)460, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Dragon Quest 3","1986");
+		Enemigo e6=new Enemigo("Slime", (short)200, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Dragon Quest 3","1986");
 		
 		ArrayList<Ataque>ataquese6=new ArrayList<Ataque>();
-		ataquese6.add(this.listaAtaques().get(9));
-		ataquese6.add(this.listaAtaques().get(10));
-		e4.setAtaques(ataquese6);
+		ataquese6.add(this.listaAtaques().get(13));
+		ataquese6.add(this.listaAtaques().get(14));
+		e6.setAtaques(ataquese6);
 		en.add(e6);
 		//6
 		
-		Enemigo e7=new Enemigo("Mother Brain", (short)500, (short)7, (short)2, this.getAtaques(),(byte) 90, Tipo.ELECTRICO,"Metroid","1986");
+		Enemigo e7=new Enemigo("Mother Brain", (short)400, (short)7, (short)2, this.getAtaques(),(byte) 90, Tipo.ELECTRICO,"Metroid","1986");
 		
 		ArrayList<Ataque>ataquese7=new ArrayList<Ataque>();
-		ataquese7.add(this.listaAtaques().get(9));
-		ataquese7.add(this.listaAtaques().get(10));
-		e4.setAtaques(ataquese7);
+		ataquese7.add(this.listaAtaques().get(15));
+		ataquese7.add(this.listaAtaques().get(16));
+		e7.setAtaques(ataquese7);
 		en.add(e7);
 		//7
 		
-		Enemigo e8=new Enemigo("Masked Man", (short)300, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Mother 3","2006");
+		Enemigo e8=new Enemigo("Ganon", (short)450, (short)8, (short)2, this.getAtaques(),(byte) 90, Tipo.FUEGO,"The Legend of Zelda","1991");
 		
 		ArrayList<Ataque>ataquese8=new ArrayList<Ataque>();
-		ataquese8.add(this.listaAtaques().get(9));
-		ataquese8.add(this.listaAtaques().get(10));
-		e4.setAtaques(ataquese8);
+		ataquese8.add(this.listaAtaques().get(17));
+		ataquese8.add(this.listaAtaques().get(18));
+		e8.setAtaques(ataquese8);
 		en.add(e8);
 		//8
 
-		Enemigo e9=new Enemigo("Masked Man", (short)300, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Mother 3","2006");
+		Enemigo e9=new Enemigo("Chocobo", (short)400, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.ELECTRICO,"Final Fantasy 3","1987");
 		
 		ArrayList<Ataque>ataquese9=new ArrayList<Ataque>();
-		ataquese9.add(this.listaAtaques().get(9));
-		ataquese9.add(this.listaAtaques().get(10));
-		e4.setAtaques(ataquese9);
+		ataquese9.add(this.listaAtaques().get(19));
+		ataquese9.add(this.listaAtaques().get(20));
+		e9.setAtaques(ataquese9);
 		en.add(e9);
 		
 		//9
 		
-		Enemigo e10=new Enemigo("Masked Man", (short)300, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Mother 3","2006");
+		Enemigo e10=new Enemigo("Bowser", (short)620, (short)6, (short)1, this.getAtaques(),(byte) 90, Tipo.FISICO,"Super Mario Bros.","1985");
 		ArrayList<Ataque>ataquese10=new ArrayList<Ataque>();
-		ataquese10.add(this.listaAtaques().get(9));
-		ataquese10.add(this.listaAtaques().get(10));
-		e4.setAtaques(ataquese10);
+		ataquese10.add(this.listaAtaques().get(21));
+		ataquese10.add(this.listaAtaques().get(22));
+		e10.setAtaques(ataquese10);
 		en.add(e10);
 		
 		//10
 		
-		Enemigo e11=new Enemigo("Masked Man", (short)300, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Mother 3","2006");
+		Enemigo e11=new Enemigo("Barroman", (short)70, (short)1, (short)1, this.getAtaques(),(byte) 90, Tipo.FISICO,"LOL","Es coña esta te la regalo");
 		
 		ArrayList<Ataque>ataquese11=new ArrayList<Ataque>();
-		ataquese11.add(this.listaAtaques().get(9));
-		ataquese11.add(this.listaAtaques().get(10));
-		e4.setAtaques(ataquese11);
+		ataquese11.add(this.listaAtaques().get(5));
+
+		e11.setAtaques(ataquese11);
 		en.add(e11);
 		//11
 		
-		Enemigo e12=new Enemigo("Masked Man", (short)300, (short)5, (short)2, this.getAtaques(),(byte) 90, Tipo.HIELO,"Mother 3","2006");
+		Enemigo e12=new Enemigo("Tu", (short)1, (short)1, (short)1, this.getAtaques(),(byte) 90, Tipo.HIELO,"No ha sido tan dificil","eh?");
 		
 		ArrayList<Ataque>ataquese12=new ArrayList<Ataque>();
-		ataquese12.add(this.listaAtaques().get(9));
-		ataquese12.add(this.listaAtaques().get(10));
-		e4.setAtaques(ataquese12);
+		ataquese12.add(this.listaAtaques().get(5));
+		e12.setAtaques(ataquese12);
 		en.add(e12);
 		
 		return en.get(e);
@@ -252,8 +255,42 @@ public class Enemigo extends Personaje {
 		//10
 		Ataque a11=new Ataque("PK Flash",(short)35,(byte)60,Tipo.FISICO,(byte)0);
 		listaAtaques.add(a11);
-		
-		
+		//11 n
+		Ataque a12=new Ataque("Hostion",(short)45,(byte)90,Tipo.FISICO,(byte)0);
+		listaAtaques.add(a12);
+		//12 n
+		Ataque a13=new Ataque("Lanzacohetes",(short)38,(byte)70,Tipo.FISICO,(byte)0);
+		listaAtaques.add(a13);
+		//13 sl
+		Ataque a14=new Ataque("Golpe",(short)25,(byte)100,Tipo.FISICO,(byte)0);
+		listaAtaques.add(a14);
+		//14 sl
+		Ataque a15=new Ataque("Salpicon",(short)22,(byte)80,Tipo.HIELO,(byte)0);
+		listaAtaques.add(a15);
+		//15 mb
+		Ataque a16=new Ataque("Rayo laser",(short)30,(byte)80,Tipo.ELECTRICO,(byte)0);
+		listaAtaques.add(a16);
+		//16 mb
+		Ataque a17=new Ataque("Manotazo",(short)28,(byte)100,Tipo.FISICO,(byte)0);
+		listaAtaques.add(a17);
+		//17 gn
+		Ataque a18=new Ataque("Espadazo",(short)38,(byte)100,Tipo.FISICO,(byte)0);
+		listaAtaques.add(a18);
+		//18 gn
+		Ataque a19=new Ataque("Arañazo",(short)30,(byte)100,Tipo.FISICO,(byte)0);
+		listaAtaques.add(a19);
+		//19 ch
+		Ataque a20=new Ataque("Picotazo",(short)27,(byte)100,Tipo.FISICO,(byte)0);
+		listaAtaques.add(a20);
+		//20 ch
+		Ataque a21=new Ataque("Vendaval",(short)25,(byte)100,Tipo.HIELO,(byte)0);
+		listaAtaques.add(a21);
+		//21 b
+		Ataque a22=new Ataque("Lanzallamas",(short)40,(byte)100,Tipo.FUEGO,(byte)0);
+		listaAtaques.add(a22);
+		//22 b
+		Ataque a23=new Ataque("Bola pinchos",(short)30,(byte)100,Tipo.FISICO,(byte)0);
+		listaAtaques.add(a23);
 		return listaAtaques;
 	}
 }
