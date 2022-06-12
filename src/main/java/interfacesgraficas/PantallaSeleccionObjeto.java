@@ -35,6 +35,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PantallaSeleccionObjeto extends JPanel	{
+	/**
+	 * Pantalla que sirve para seleccionar el nuevo objeto que recibirá el jugador
+	 * @param v
+	 * @param j: Jugador recibido por argumentos que recibirá el objeto.
+	 * @throws IOException
+	 */
 	public PantallaSeleccionObjeto(Ventana v, Jugador j) throws IOException {
 		
 		try {

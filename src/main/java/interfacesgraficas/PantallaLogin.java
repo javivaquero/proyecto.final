@@ -29,6 +29,12 @@ import java.awt.CardLayout;
 import javax.swing.Icon;
 import javax.swing.border.LineBorder;
 
+/**
+ * Pantalla que te permite iniciar sesión con un usuario previamente registrado.
+ * @author Javi
+ *
+ */
+
 public class PantallaLogin extends JPanel{
 	private Ventana ventana;
 	private JTextField campoUsuario;

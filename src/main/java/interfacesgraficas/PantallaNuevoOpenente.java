@@ -19,8 +19,17 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.Icon;
-
+/**
+ * Pantalla que reproduce una animación para pasar al siguiente combate
+ * @author Javi
+ *
+ */
 public class PantallaNuevoOpenente extends JPanel {
+	/**
+	 * 
+	 * @param v
+	 * @param j:Jugador recibido por argumentos que pasará al siguiente combate.
+	 */
 	public PantallaNuevoOpenente(Ventana v, Jugador j) {
 		try {
 			AudioInputStream audio = AudioSystem.getAudioInputStream(new File("./ost/nf.wav"));

@@ -7,7 +7,11 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.border.MatteBorder;
-
+/**
+ * Estilo por defecto de un tipo de botón de las interfaces.
+ * @author Javi
+ *
+ */
 public class BotonRojo extends JButton {
 
 	public BotonRojo(String s) {

@@ -18,6 +18,12 @@ import interfacesgraficas.Ventana;
 
 import utils.ConexionBD;
 
+/**
+ * Clase del jugador. Almacena todos los datos del jugador.
+ * @author Javi
+ *
+ */
+
 public class Jugador extends Personaje{
 
 	private ArrayList<Objeto>objetos;
@@ -38,6 +44,11 @@ public class Jugador extends Personaje{
 	public byte getTope() {
 		return tope;
 	}
+	/**
+	 * Setter que sube a la base de datos el tope de pisos del juego cuando se llega a este.
+	 * @param tope
+	 * @throws SQLException
+	 */
 	public void setTope(byte tope) throws SQLException {
 
 		Statement smt=ConexionBD.conectar();
@@ -64,7 +75,22 @@ public class Jugador extends Personaje{
 		this.inventario = inventario;
 	}
 
-	
+	/**
+	 * 
+	 * @param nombre:nombre del jugador
+	 * @param pVida: Puntos de vida del jugador, cuando estos llegan a 0, se acaba la partida.
+	 * @param pAtaque: Puntos de ataque base de un jugador.
+	 * @param pDefensa: Puntos de defensa base de un jugador.
+	 * @param ataques: Lista con todos los ataques del jugador.
+	 * @param pVelocidad: Puntos de velocidad del jugador.
+	 * @param objetos: Lista con todos los objetos obtenidos tras combate del jugador.
+	 * @param inventario: Lista con todos los consumibles obtenidos tras combate del jugador.
+	 * @param piso: Piso actual en el que se encuentra el jugador. El rival cambiará dependiendo este valor.
+	 * @param clase: Clase del jugador, Cambiará sus estadísticas predetermindadas dependiendo de cual sea la elección.
+	 * @param tipo: Tipo de la clase del jugador. Dependiendo es este, podría recibir más daño del enemigo.
+	 * @param pp: Maná del jugador, si este llega a 0, este no podrá usar movimientos que gasten de este, en su lugar, se usará automaticamente un ataque físico, ya que no consume de este.
+	 * @param tope: Piso límite del jugador, incrementa según se van ganando partidas.
+	 */
 	public Jugador(String nombre, short pVida, short pAtaque, short pDefensa, ArrayList<Ataque> ataques,
 			byte pVelocidad, ArrayList<Objeto> objetos, ArrayList<Consumible> inventario,byte piso,
 			Clase clase,Tipo tipo,int pp,byte tope) {
@@ -153,7 +179,14 @@ public class Jugador extends Personaje{
 	}
 	
 	//INICIAR SESIÓN
-	
+	/**
+	 * Constructor que sirve para iniciar sesión con un usuario previamiente registrado.
+	 * @param nombre
+	 * @param pass
+	 * @throws UsuarioNoExisteException: Excepción que salta cuando el nombre no coincide en la base de datos.
+	 * @throws SQLException
+	 * @throws ContraseñaIncorrectaException: Excepción que salta cuando la conrtraseña no coincide en la base de datos.
+	 */
 	public Jugador(String nombre,String pass) throws NombreInvalidoException, UsuarioNoExisteException, SQLException, ContraseñaIncorrectaException {		 
 		Statement smt=ConexionBD.conectar();
 		ResultSet cursor=smt.executeQuery("select * from usuario where usuario='"+
@@ -174,7 +207,12 @@ public class Jugador extends Personaje{
 	}
 	
 	//REGISTRARSE
-	
+	/**
+	 * 
+	 * @param a: no hace nada, era para diferenciar el login del registro al llamarlo.
+	 * @throws NombreInvalidoException: Salta si el nombre de usuario es mayor a 12 caracteres
+	 * @throws SQLException
+	 */
 	public Jugador(String nombre,String pass,String a) throws NombreInvalidoException, SQLException {
 		if(nombre.length()>11) {
 			throw new NombreInvalidoException("El nombre no es válido");
@@ -193,8 +231,13 @@ public class Jugador extends Personaje{
 		}
 		ConexionBD.desconectar();
 	}
-	
-	public void atacarEnemigo(Enemigo e,Ataque a,byte at) throws FileNotFoundException {
+	/**
+	 * 
+	 * @param e:Enemigo recibido por argumentos que recibirá el daño
+	 * @param a:Ataque recibido por argumentos, si el número de pp del jugador es 0, este se sustituirá por una ataque físico por defecto.
+	 * @param at:Número en el ArrayList<Ataque> del juagdor.
+	 */
+	public void atacarEnemigo(Enemigo e,Ataque a,byte at)  {
 		Random r=new Random();
 		Ataque atJ;
 		if(this.getPp()==0) {
@@ -258,7 +301,11 @@ public class Jugador extends Personaje{
 	public void setPiso(byte piso) {
 		this.piso = piso;
 	}
-	
+	/**
+	 * Función que devuelve un objeto de tipo curativo dependiendo de valores del jugador
+	 * @param j: Jugador que almacenará el objeto en su arraylist pertinente
+	 * @return
+	 */
 	public Objeto listaObjetosCurativos(Jugador j) {
 		
 		Random r=new Random();
@@ -294,7 +341,11 @@ public class Jugador extends Personaje{
 		}
 		return o;
 	}
-	
+	/**
+	 * Función que devuelve un objeto de tipo defensivo dependiendo de valores del jugador
+	 * @param j: Jugador que almacenará el objeto en su arraylist pertinente
+	 * @return
+	 */
 public Objeto listaObjetosDefensivos(Jugador j) {
 		
 		Random r=new Random();
@@ -324,7 +375,11 @@ public Objeto listaObjetosDefensivos(Jugador j) {
 		}
 		return o;
 	}
-
+/**
+ * Función que devuelve un objeto de tipo ofensivo dependiendo de valores del jugador
+ * @param j: Jugador que almacenará el objeto en su arraylist pertinente
+ * @return
+ */
 public Objeto listaObjetosOfensivos(Jugador j) {
 	
 	Random r=new Random();
@@ -360,7 +415,11 @@ public Objeto listaObjetosOfensivos(Jugador j) {
 	public void setClase(Clase clase) {
 		this.clase = clase;
 	}
-	
+	/**
+	 * Función que devuelve un Consumible  dependiendo de valores del jugador
+	 * @param j: Jugador que almacenará el consumible en su arraylist pertinente
+	 * @return
+	 */
 public Consumible listaConsumibles(Jugador j) {
 		Random r=new Random();
 		Consumible c=null;

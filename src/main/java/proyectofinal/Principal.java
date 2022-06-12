@@ -1,5 +1,7 @@
 package proyectofinal;
-
+/**
+ * Main del programa, lo único que hace es llamar a la función de la ventana para iniciar el login.
+ */
 import java.util.ArrayList;
 import java.util.Scanner;
 import enums.Tipo;

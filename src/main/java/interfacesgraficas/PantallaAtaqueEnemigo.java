@@ -31,9 +31,23 @@ import componentesvisuales.JLComb;
 import java.awt.GridLayout;
 import javax.swing.Icon;
 import java.awt.event.MouseMotionAdapter;
-
+/**
+ * Pantalla clon de pantalla combate en diseño para pasar el turno del enemigo.
+ * @author Javi
+ *
+ */
 public class PantallaAtaqueEnemigo extends JPanel {
 	private String men;
+	/**
+	 * 
+	 * @param v
+	 * @param j: Jugador al que será atacado recibido por argumentos.
+	 * @param m: Mensaje recibido por argumentos
+	 * @param en: Enemigo que atacará recibido por argumentos.
+	 * @param sprite: Dibujo del enemigo recibido por argumentos.
+	 * @throws IOException
+	 * @throws LineUnavailableException
+	 */
 	public PantallaAtaqueEnemigo(Ventana v, Jugador j, String m, Enemigo en,ImageIcon sprite) throws IOException, LineUnavailableException {
 
 

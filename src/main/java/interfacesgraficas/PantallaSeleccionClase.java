@@ -21,6 +21,7 @@ import clases.Ataque;
 import clases.Consumible;
 import clases.Jugador;
 import clases.Objeto;
+import componentesvisuales.BotonI;
 import enums.Clase;
 import enums.Tipo;
 import java.awt.CardLayout;
@@ -28,35 +29,39 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class PantallaSeleccionClase extends JPanel{
-
+	/**
+	 * Pantalla que sirve para seleccionar la clase del jugador. Segun el seleccionado, sus estadisticas variaran.
+	 */
 	private Ventana ventana;
 	private Jugador j;
+	/**
+	 * 
+	 * @param ventana
+	 * @param user: Nombre del jugador insertado previamente en la base de datos.
+	 * @throws IOException
+	 */
 	public PantallaSeleccionClase(Ventana ventana, String user) throws IOException{
 		super();
+		setBackground(Color.BLACK);
 		this.ventana = ventana;
 		//IMAGENES
 		BufferedImage mageP = ImageIO.read(new File("./imagenes/mageS.png"));
 		BufferedImage tankP= ImageIO.read(new File("./imagenes/tankS.png"));
 		BufferedImage assasinP= ImageIO.read(new File("./imagenes/assasinS.png"));
 		BufferedImage bowP= ImageIO.read(new File("./imagenes/bowS.png"));
-		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		setLayout(null);
 		
-		JLabel mageS = new JLabel(new ImageIcon(mageP));
-		add(mageS);
 		
-		JLabel tankS= new JLabel(new ImageIcon(tankP));
-		add(tankS);
 		
-		JLabel bowS = new JLabel(new ImageIcon(bowP));
-		add(bowS);
-		
-		JLabel assasinS = new JLabel(new ImageIcon(assasinP));
-		add(assasinS);
-		
-		JButton botonArquero = new JButton("Arquero");
-		botonArquero.setFont(new Font("Verdana", Font.PLAIN, 11));
+		JButton botonArquero = new BotonI("Arquero");
+		botonArquero.setBorder(new LineBorder(Color.WHITE));
+		botonArquero.setBorderPainted(true);
+		botonArquero.setBounds(518, 399, 185, 104);
+		botonArquero.setFont(new Font("StatusPlz", Font.PLAIN, 22));
 		botonArquero.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -77,8 +82,11 @@ public class PantallaSeleccionClase extends JPanel{
 			}
 		});
 		//BOTONES
-		JButton botonMago = new JButton("Mago");
-		botonMago.setFont(new Font("Verdana", Font.PLAIN, 11));
+		JButton botonMago = new BotonI("Mago");
+		botonMago.setBorder(new LineBorder(Color.WHITE));
+		botonMago.setBorderPainted(true);
+		botonMago.setBounds(103, 399, 190, 104);
+		botonMago.setFont(new Font("StatusPlz", Font.PLAIN, 22));
 		botonMago.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -100,8 +108,11 @@ public class PantallaSeleccionClase extends JPanel{
 		});
 		add(botonMago);
 		
-		JButton botonTanque = new JButton("Tanque");
-		botonTanque.setFont(new Font("Verdana", Font.PLAIN, 11));
+		JButton botonTanque = new BotonI("Tanque");
+		botonTanque.setBorderPainted(true);
+		botonTanque.setBorder(new LineBorder(Color.WHITE));
+		botonTanque.setBounds(316, 399, 185, 104);
+		botonTanque.setFont(new Font("StatusPlz", Font.PLAIN, 22));
 		botonTanque.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -124,8 +135,11 @@ public class PantallaSeleccionClase extends JPanel{
 		add(botonTanque);
 		add(botonArquero);
 		
-		JButton botonAsesino = new JButton("Asesino");
-		botonAsesino.setFont(new Font("Verdana", Font.PLAIN, 11));
+		JButton botonAsesino = new BotonI("Asesino");
+		botonAsesino.setBorder(new LineBorder(Color.WHITE));
+		botonAsesino.setBorderPainted(true);
+		botonAsesino.setBounds(723, 399, 185, 104);
+		botonAsesino.setFont(new Font("StatusPlz", Font.PLAIN, 22));
 		botonAsesino.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {				
@@ -146,8 +160,22 @@ public class PantallaSeleccionClase extends JPanel{
 		});
 		add(botonAsesino);
 		
+		JLabel imgMago = new JLabel(new ImageIcon("./imagenes/mageS.png"));
+		imgMago.setBounds(125, 264, 150, 124);
+		add(imgMago);
+		
+		JLabel imgTanque = new JLabel(new ImageIcon("./imagenes/tankS.png"));
+		imgTanque.setBounds(333, 264, 150, 124);
+		add(imgTanque);
+		
+		JLabel imgArquero = new JLabel(new ImageIcon("./imagenes/bowS.png"));
+		imgArquero.setBounds(534, 264, 150, 124);
+		add(imgArquero);
+		
+		JLabel imgAsesino = new JLabel(new ImageIcon("./imagenes/assasinS.png"));
+		imgAsesino.setBounds(741, 264, 150, 124);
+		add(imgAsesino);
+		
 		
 	}
-	
-	
 }

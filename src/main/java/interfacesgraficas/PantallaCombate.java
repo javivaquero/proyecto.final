@@ -48,12 +48,24 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import javax.swing.Icon;
 import javax.swing.JList;
-
+/**
+ * Pantalla donde ocurre toda acción, el usuario elije recible su información, la del enemigo y la acción a realizar por pantalla.
+ * @author Javi
+ *
+ */
 public class PantallaCombate extends JPanel{
 	private Enemigo ene;
 	protected ImageIcon sprite;
 	private String men;
-
+	/**
+	 * 
+	 * @param v
+	 * @param j:Jugador recibido por argumentos.
+	 * @param m: Mensaje recibido por argumentos..
+	 * @param en enemigo recibido por argumentos.
+	 * @throws IOException
+	 * @throws LineUnavailableException
+	 */
 	public PantallaCombate(Ventana v,Jugador j,String m,Enemigo en) throws IOException, LineUnavailableException {		
 		this.men=m;
 		

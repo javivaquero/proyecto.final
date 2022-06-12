@@ -12,7 +12,11 @@ import javax.swing.ImageIcon;
 import clases.Ataque;
 import enums.Tipo;
 
-
+/**
+ * Clase Enemigo: Objeto que peleará contra el jugador en cada combate.
+ * @author Javi
+ *
+ */
 
 public class Enemigo extends Personaje {
 
@@ -29,7 +33,18 @@ public class Enemigo extends Personaje {
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
-
+	/**
+	 * 
+	 * @param nombre: Nombre del enemigo
+	 * @param pVida: Puntos de vida del enemigo, cuando este valor llega a 0. el enemigo muere.
+	 * @param pAtaque: Puntos de ataque del enemigo potencia base de los ataques de un enemigo.
+	 * @param pDefensa: Puntos de defensa de un enemigo.
+	 * @param ataques: Lista de ataques de un enemigo.
+	 * @param pVelocidad: Velocidad base de un enemigo.
+	 * @param tipo: Tipo de un enemigo, dependiendo del mismo, podría recibir más daño del jugador.
+	 * @param saga: Nombre del juego o la saga en la que aparece el enemigo.
+	 * @param fLanzamiento: Fecha de lanzamiento de la saga.
+	 */
 	public Enemigo(String nombre, short pVida, short pAtaque, short pDefensa, ArrayList<Ataque> ataques,
 			byte pVelocidad, Tipo tipo,String saga, String fLanzamiento) {
 		super(nombre, pVida, pAtaque, pDefensa, ataques, pVelocidad);
@@ -41,6 +56,13 @@ public class Enemigo extends Personaje {
 	public Enemigo() {
 		
 	}
+	/**
+	 * 
+	 * @param j jugador recibido por argumentos
+	 * @param a ataque recibido por argumentos
+	 * 
+	 * Hace el cálculo del daño que recibirá el jugador del enemigo en ese turno.
+	 */
 	public void atacarJugador(Jugador j,Ataque a) {
 		Random r=new Random();
 		Ataque atEn=a;
@@ -81,7 +103,13 @@ public class Enemigo extends Personaje {
 		}
 		
 	}
-
+	
+	/**
+	 * 
+	 * @param e: Valor recibido por argumentos que se refiere al piso actual del jugador.
+	 * @return: Dependiendo del valor de e, devolverá al combate un enemigo.
+	 * @throws IOException
+	 */
 	public Enemigo listaEnemigos(byte e) throws IOException {
 		Random r=new Random();
 		ArrayList<Enemigo>en=new ArrayList<Enemigo>();
@@ -219,7 +247,10 @@ public class Enemigo extends Personaje {
 	public void setfLanzamiento(String fLanzamiento) {
 		this.fLanzamiento = fLanzamiento;
 	}
-
+	/**
+	 * 
+	 * @return: Devuelve una lista con todos los ataques de todos los enemigos del juego. Se incluyen en listaEnemigos.
+	 */
 	public ArrayList<Ataque> listaAtaques() {
 		ArrayList<Ataque>listaAtaques=new ArrayList<Ataque>();
 		//0

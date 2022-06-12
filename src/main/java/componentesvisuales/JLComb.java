@@ -6,7 +6,11 @@ import java.awt.Font;
 import javax.swing.JLabel;
 
 public class JLComb extends JLabel{
-
+	/**
+	 * Estilo por defecto de un tipo de JLabel de las interfaces.
+	 * @author Javi
+	 *
+	 */
 	public JLComb(String s) {
 		super(s);
 		estilosPorDefecto();

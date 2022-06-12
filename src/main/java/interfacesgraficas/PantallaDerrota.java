@@ -13,7 +13,10 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 public class PantallaDerrota extends JPanel {
-	
+	/**
+	 * Pantalla que muestra un mensaje de derrota y te permite volver al login.
+	 * @param v
+	 */
 public PantallaDerrota(Ventana v) {
 	setBackground(Color.BLACK);
 	setLayout(null);

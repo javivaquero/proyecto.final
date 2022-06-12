@@ -44,6 +44,7 @@ public class Ataque extends ElementoConNombre {
 	 * @param precision: Porcentaje de acierto del ataque.
 	 * @param tipo: Tipo del ataque recogido en la clase ENUM.
 	 * @param costePP: Coste de magia restada al jugador, si el elemento tipo es FISICO, este será 0.
+	 * 
 	 */
 	public Ataque(String nombre, short potencia, byte precision, Tipo tipo, int costePP) {
 		super(nombre);

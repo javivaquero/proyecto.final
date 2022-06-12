@@ -3,7 +3,11 @@ package clases;
 import java.util.ArrayList;
 
 import enums.Tipo;
-
+/**
+ * Clase con variables comunes entre Jugador y Enemigo
+ * @author Javi
+ *
+ */
 public class Personaje extends ElementoConNombre {
 
 	private short pVida;
@@ -46,6 +50,15 @@ public class Personaje extends ElementoConNombre {
 	public void setpVelocidad(byte pVelocidad) {
 		this.pVelocidad = pVelocidad;
 	}
+	/**
+	 * 
+	 * @param nombre:Nombre del jugador/enemigo
+	 * @param pVida: Puntos de vida del jugador/enemigo, cuando llegan a 0, mueren.
+	 * @param pAtaque Puntos de ataque del jugador/enemigo.
+	 * @param pDefensa Puntos de defensa del jugador/enemigo.
+	 * @param ataques: Lista de ataques del jugador/enemigo.
+	 * @param pVelocidad: Puntos de velocidadd el jugador/enemigo
+	 */
 	public Personaje(String nombre, short pVida, short pAtaque, short pDefensa, ArrayList<Ataque> ataques,
 			byte pVelocidad) {
 		super(nombre);

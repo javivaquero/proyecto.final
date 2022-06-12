@@ -25,6 +25,12 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+ * Pantalla que sirve para registrar un usuario en la base de datos.
+ * @author Javi
+ *
+ */
+
 public class PantallaRegistro extends JPanel {
 	private JTextField campoUsuario;
 	private JPasswordField campoPass;

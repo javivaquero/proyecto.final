@@ -4,10 +4,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+/**
+ * Clase que permite a java conctarse con mysql
+ * @author Javi
+ *
+ */
 
 public abstract class ConexionBD {
+	//Línea para conectarse con tu base de datos
 	private final static String cadenaConexion = "jdbc:mysql://127.0.0.1:3306/dbpfinal";
+	//Nombre del usuario de la BBDD
 	private final static String usuarioBD = "root";
+	//Contraseña del usuario de la BBDD
 	private final static String passwordBD = "1234";
 	private static Connection conexion; // singleton
 

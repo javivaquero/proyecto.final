@@ -11,7 +11,11 @@ import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-
+/**
+ * Pantalla que muestra un mensaje de victoria y te permite volver al login.
+ * @author Javi
+ *
+ */
 public class PantallaVictoria extends JPanel{
 	public PantallaVictoria(Ventana v) {
 		setBackground(Color.BLACK);
